@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
+import profilePhoto from "@/assets/profile-photo.png";
 
 const HeroSection = () => {
   const [time, setTime] = useState(new Date());
@@ -18,7 +19,7 @@ const HeroSection = () => {
     <section className="min-h-screen flex items-center section-spacing">
       <div className="container-strict w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left: Vertical Type */}
+          {/* Left: Vertical Type + Photo */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -27,12 +28,19 @@ const HeroSection = () => {
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-6">
               Portfolio / 2024
             </p>
-            <h1 className="font-display font-black text-6xl md:text-7xl lg:text-8xl uppercase tracking-tighter leading-[0.85]">
-              FULL
-              <br />
-              <span className="text-accent-commercial">STACK</span>
-            </h1>
-            <div className="mt-8 border-t border-subtle pt-6">
+
+            <div className="flex items-end gap-6 mb-8">
+              <h1 className="font-display font-black text-6xl md:text-7xl lg:text-8xl uppercase tracking-tighter leading-[0.85]">
+                FULL
+                <br />
+                <span className="text-accent-commercial">STACK</span>
+              </h1>
+              <div className="border border-subtle overflow-hidden w-20 h-20 md:w-24 md:h-24 shrink-0 mb-1">
+                <img src={profilePhoto} alt="Profilbild" className="w-full h-full object-cover" />
+              </div>
+            </div>
+
+            <div className="border-t border-subtle pt-6">
               <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
                 {time.toLocaleTimeString("de-DE")} · Status: Verfügbar
               </p>
