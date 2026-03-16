@@ -2,7 +2,6 @@ import HeroSection from "@/components/HeroSection";
 import LiveDashboard from "@/components/LiveDashboard";
 import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 
 const Index = () => {
@@ -12,7 +11,6 @@ const Index = () => {
       <LiveDashboard />
       <ProjectsSection />
       <SkillsSection />
-      <TestimonialsSection />
       <ContactSection />
     </div>
   );
