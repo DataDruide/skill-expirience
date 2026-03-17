@@ -126,8 +126,39 @@ const AdminPage = () => {
       </header>
 
       <div className="container-strict py-8">
-        {/* Project List */}
+        {/* Tabs */}
         {!editing && (
+          <div className="flex gap-1 mb-8 border-b border-subtle">
+            <button
+              onClick={() => setActiveTab("projects")}
+              className={`px-4 py-2.5 text-xs font-mono uppercase tracking-widest transition-colors flex items-center gap-2 border-b-2 -mb-px ${
+                activeTab === "projects"
+                  ? "border-primary text-foreground"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              <LayoutList className="h-3.5 w-3.5" />
+              Projekte
+            </button>
+            <button
+              onClick={() => setActiveTab("requests")}
+              className={`px-4 py-2.5 text-xs font-mono uppercase tracking-widest transition-colors flex items-center gap-2 border-b-2 -mb-px ${
+                activeTab === "requests"
+                  ? "border-primary text-foreground"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              <MessageSquare className="h-3.5 w-3.5" />
+              Anfragen
+            </button>
+          </div>
+        )}
+
+        {/* Requests Tab */}
+        {!editing && activeTab === "requests" && <AdminRequests />}
+
+        {/* Project List */}
+        {!editing && activeTab === "projects" && (
           <div className="space-y-4">
             <Button variant="hero" size="lg" onClick={() => setEditing({ accent_color: "yellow", sort_order: projects.length })}>
               <Plus className="h-4 w-4 mr-2" />
