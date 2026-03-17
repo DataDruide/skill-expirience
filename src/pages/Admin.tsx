@@ -5,8 +5,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Plus, Pencil, Trash2, Eye, EyeOff, LogOut, ArrowLeft, GripVertical, Save } from "lucide-react";
+import { Plus, Pencil, Trash2, Eye, EyeOff, LogOut, ArrowLeft, GripVertical, Save, MessageSquare, LayoutList } from "lucide-react";
 import type { Tables } from "@/integrations/supabase/types";
+import AdminRequests from "@/components/AdminRequests";
 
 type Project = Tables<"projects">;
 

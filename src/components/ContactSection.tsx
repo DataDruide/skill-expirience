@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { Mail, Github, Linkedin, Zap } from "lucide-react";
+import { Mail, Github, Linkedin } from "lucide-react";
+import ContactForm from "@/components/ContactForm";
 
 const ContactSection = () => {
   const [copied, setCopied] = useState(false);
@@ -20,23 +20,31 @@ const ContactSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="space-y-12"
+          className="space-y-16"
         >
           <div>
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-4">
               05 / Kontakt
             </p>
             <h2 className="font-display font-black text-4xl md:text-5xl uppercase tracking-tight">
-              Boss-Call
+              Projekt starten
             </h2>
+            <p className="text-muted-foreground mt-4 max-w-lg">
+              Du hast eine Idee oder ein konkretes Projekt? Schreib mir direkt — ich melde mich innerhalb von 24 Stunden.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-foreground/5">
+          {/* Contact Form */}
+          <div className="max-w-2xl">
+            <ContactForm />
+          </div>
+
+          {/* Quick Links */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-foreground/5">
             {[
-              { icon: Mail, label: "Email", value: "mzmann252@gmail.com", href: "mailto:mzmann252@gmail.com" },
+              { icon: Mail, label: "Email", value: "mzmann252@gmail.com", href: "mailto:mzmann252@gmail.com", onClick: handleCopy },
               { icon: Github, label: "GitHub", value: "DataDruide", href: "https://github.com/DataDruide" },
               { icon: Linkedin, label: "LinkedIn", value: "Marcel Zimmermann", href: "https://www.linkedin.com/in/marcel-zimmermann-bb8802211/" },
-              { icon: Zap, label: "Schnellkontakt", value: "Email senden", href: "mailto:mzmann252@gmail.com?subject=Projektanfrage" },
             ].map((item) => (
               <a
                 key={item.label}
@@ -53,15 +61,6 @@ const ContactSection = () => {
               </a>
             ))}
           </div>
-
-          <Button
-            variant="bossCall"
-            size="xl"
-            onClick={handleCopy}
-            className={copied ? "bg-accent-impact" : ""}
-          >
-            {copied ? "Kopiert! ✓" : "Email kopieren"}
-          </Button>
         </motion.div>
       </div>
 
