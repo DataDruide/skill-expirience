@@ -34,7 +34,7 @@ const ContactSection = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-foreground/5">
             {[
               { icon: Mail, label: "Email", value: "deine@email.de", href: "mailto:deine@email.de" },
-              { icon: Github, label: "GitHub", value: "dein-github", href: "https://github.com" },
+              { icon: Github, label: "GitHub", value: "DataDruide", href: "https://github.com/DataDruide" },
               { icon: Linkedin, label: "LinkedIn", value: "dein-linkedin", href: "https://linkedin.com" },
               { icon: Zap, label: "Schnellkontakt", value: "WhatsApp", href: "#" },
             ].map((item) => (
