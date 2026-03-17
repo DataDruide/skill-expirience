@@ -7,7 +7,7 @@ const ContactSection = () => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText("deine@email.de");
+    navigator.clipboard.writeText("mzmann252@gmail.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -33,10 +33,10 @@ const ContactSection = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-foreground/5">
             {[
-              { icon: Mail, label: "Email", value: "deine@email.de", href: "mailto:deine@email.de" },
+              { icon: Mail, label: "Email", value: "mzmann252@gmail.com", href: "mailto:mzmann252@gmail.com" },
               { icon: Github, label: "GitHub", value: "DataDruide", href: "https://github.com/DataDruide" },
-              { icon: Linkedin, label: "LinkedIn", value: "dein-linkedin", href: "https://linkedin.com" },
-              { icon: Zap, label: "Schnellkontakt", value: "WhatsApp", href: "#" },
+              { icon: Linkedin, label: "LinkedIn", value: "Marcel Zimmermann", href: "https://www.linkedin.com/in/marcel-zimmermann-bb8802211/" },
+              { icon: Zap, label: "Schnellkontakt", value: "Email senden", href: "mailto:mzmann252@gmail.com?subject=Projektanfrage" },
             ].map((item) => (
               <a
                 key={item.label}
