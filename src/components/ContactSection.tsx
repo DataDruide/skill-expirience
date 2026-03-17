@@ -7,7 +7,7 @@ const ContactSection = () => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText("deine@email.de");
+    navigator.clipboard.writeText("mzmann252@gmail.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
