@@ -18,6 +18,8 @@ const AdminPage = () => {
   const [editing, setEditing] = useState<Partial<Project> | null>(null);
   const [loading, setLoading] = useState(false);
   const [imageFile, setImageFile] = useState<File | null>(null);
+  const [activeTab, setActiveTab] = useState<"projects" | "requests">("projects");
+  const [imageFile, setImageFile] = useState<File | null>(null);
 
   useEffect(() => {
     if (!authLoading && !user) navigate("/login");
