@@ -33,7 +33,7 @@ const HeroSection = () => {
             className="order-2 lg:order-1"
           >
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-6">
-              Portfolio / 2024–2026
+              Marcel Zimmermann / Portfolio 2024–2026
             </p>
 
             <h1 className="font-display font-black text-5xl md:text-6xl lg:text-7xl uppercase tracking-tighter leading-[0.85] mb-6">
@@ -44,12 +44,13 @@ const HeroSection = () => {
 
             <div className="space-y-4 mb-8">
               <p className="font-display font-bold text-xl text-foreground">
-                B2B & SaaS Lösungen – von 0 auf Production
+                Mobile · Web · Von der Idee bis Production
               </p>
               <p className="text-base leading-relaxed text-muted-foreground max-w-lg">
-                Ich baue komplette Web-Applikationen für Unternehmen – vom Ride-Hailing-Service 
-                über Gaming-Plattformen bis hin zu Barrierefreiheits-Tools. Kein Template-Baukausten, 
-                sondern maßgeschneiderte Fullstack-Lösungen.
+                Fullstack Developer mit Erfahrung in React, Flutter, Swift & Node.js. 
+                Ich entwickle plattformübergreifende Apps und Web-Lösungen – von 
+                BLE-Integration und CarPlay bis hin zu kompletten SaaS-Plattformen. 
+                Ehemaliger Flutter-Dozent mit Leidenschaft für sauberen Code und echten Impact.
               </p>
             </div>
 
@@ -90,7 +91,7 @@ const HeroSection = () => {
                 <div className="relative w-full h-full overflow-hidden border-2 border-subtle bg-secondary">
                   <img 
                     src={profilePhoto} 
-                    alt="Fullstack Developer Profilbild" 
+                    alt="Marcel Zimmermann – Fullstack Developer" 
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" 
                   />
                 </div>
@@ -102,7 +103,7 @@ const HeroSection = () => {
                   transition={{ delay: 0.8, duration: 0.5 }}
                   className="absolute -right-4 md:-right-8 top-8 bg-card border border-subtle px-4 py-3"
                 >
-                  <p className="text-2xl font-display font-black text-accent-commercial">8+</p>
+                  <p className="text-2xl font-display font-black text-accent-commercial">9+</p>
                   <p className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Projekte</p>
                 </motion.div>
                 
@@ -112,8 +113,8 @@ const HeroSection = () => {
                   transition={{ delay: 1, duration: 0.5 }}
                   className="absolute -left-4 md:-left-8 bottom-12 bg-card border border-subtle px-4 py-3"
                 >
-                  <p className="text-2xl font-display font-black text-accent-impact">B2B</p>
-                  <p className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">& SaaS</p>
+                  <p className="text-2xl font-display font-black text-accent-impact">3+</p>
+                  <p className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Jahre Dev</p>
                 </motion.div>
               </div>
             </div>
