@@ -54,7 +54,7 @@ const ContactSection = () => {
                 className="bg-background p-6 hover:bg-secondary/40 transition-colors group"
               >
                 <item.icon className="h-4 w-4 text-muted-foreground group-hover:text-primary mb-3 transition-colors" />
-                <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-1">
+                <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-1" />
                   {item.label}
                 </p>
                 <p className="text-sm text-foreground">{item.value}</p>
