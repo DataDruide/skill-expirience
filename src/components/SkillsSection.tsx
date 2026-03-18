@@ -2,35 +2,36 @@ import { motion } from "framer-motion";
 
 const skillCategories = [
   {
-    title: "Frontend",
+    title: "Frontend & Mobile",
     skills: [
-      { name: "React", detail: "2 Production Apps" },
-      { name: "Next.js", detail: "1 Production App" },
+      { name: "React", detail: "Mehrere Production Apps" },
+      { name: "Flutter", detail: "Cross-Platform & Dozent" },
+      { name: "SwiftUI / iOS", detail: "CarPlay, BLE-Integration" },
       { name: "TypeScript", detail: "Durchgängig eingesetzt" },
-      { name: "Tailwind CSS", detail: "2 Production Apps" },
-      { name: "Responsive Design", detail: "Mobile-First" },
+      { name: "Tailwind CSS", detail: "UI-Systeme & Design Tokens" },
+      { name: "Next.js", detail: "SSR & Static Sites" },
     ],
   },
   {
-    title: "Backend",
+    title: "Backend & Daten",
     skills: [
-      { name: "Node.js", detail: "2 Production Apps" },
-      { name: "Express", detail: "REST API Architektur" },
-      { name: "REST APIs", detail: "Vollständige CRUD" },
-      { name: "GraphQL", detail: "Schema Design" },
-      { name: "MongoDB", detail: "Production Datenbank" },
-      { name: "PostgreSQL", detail: "Production Datenbank" },
+      { name: "Node.js", detail: "REST & Realtime APIs" },
+      { name: "NestJS", detail: "Enterprise-Architektur" },
+      { name: "PostgreSQL", detail: "Production Datenbanken" },
+      { name: "MariaDB / MongoDB", detail: "Flexibles Daten-Modeling" },
+      { name: "Supabase", detail: "Auth, Storage, Realtime" },
+      { name: "REST & GraphQL", detail: "API-Design & Dokumentation" },
     ],
   },
   {
-    title: "DevOps & Specials",
+    title: "Tools & Methodik",
     skills: [
-      { name: "Deployment", detail: "CI/CD Pipelines" },
-      { name: "SSL & Domains", detail: "Konfiguration" },
-      { name: "Echtzeit-Features", detail: "WebSockets" },
-      { name: "Payment-Integration", detail: "Stripe/PayPal" },
-      { name: "KI-Matching", detail: "ASME-Algorithmus" },
-      { name: "DSGVO-Compliance", detail: "Rechtssicher" },
+      { name: "Figma", detail: "UX/UI Design & Prototyping" },
+      { name: "Git & CI/CD", detail: "Deployment Pipelines" },
+      { name: "MVVM / Clean Arch", detail: "Skalierbare Strukturen" },
+      { name: "Bluetooth (BLE)", detail: "Hardware-Integration" },
+      { name: "DSGVO-Compliance", detail: "Datenschutz-konform" },
+      { name: "Didaktik", detail: "Dozent & Wissensvermittlung" },
     ],
   },
 ];
@@ -47,10 +48,10 @@ const SkillsSection = () => {
           className="mb-16"
         >
           <p className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-4">
-            03 / Skills
+            04 / Skills
           </p>
           <h2 className="font-display font-black text-4xl md:text-5xl uppercase tracking-tight">
-            Kompetenz-Grid
+            Tech Stack
           </h2>
         </motion.div>
 
