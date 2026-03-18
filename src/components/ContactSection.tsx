@@ -67,7 +67,7 @@ const ContactSection = () => {
       {/* Footer */}
       <div className="container-strict mt-24 pt-8 border-t border-subtle">
         <p className="text-xs font-mono text-muted-foreground text-center uppercase tracking-widest">
-          Built with React & Heavyweight Logic
+          © {new Date().getFullYear()} Marcel Zimmermann · Built with React & TypeScript
         </p>
       </div>
     </section>
