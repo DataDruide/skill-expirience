@@ -27,5 +27,18 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script 
+      src="https://zppfsossmtzvhsqdrprd.supabase.co/functions/v1/serve-widget" 
+      data-license="4568a73e9c238085e4123b807d2c3293"
+    ></script>
+    <style>
+      /* AccessiWidget: z-index & color overrides to match portfolio design */
+      #accessiwidget-container,
+      .accessiwidget-panel,
+      .accessiwidget-toggle,
+      [id^="accessiwidget"] {
+        z-index: 9999 !important;
+      }
+    </style>
   </body>
 </html>
