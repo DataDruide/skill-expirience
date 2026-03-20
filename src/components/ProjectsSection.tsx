@@ -225,9 +225,8 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
                 />
               </div>
             )}
-            {project.id === "spaetimobil" && (
-              <PhoneCarousel />
-            )}
+            {project.id === "spaetimobil" && <PhoneCarousel />}
+            {project.id === "accessiwidget" && <AccessiPdfShowcase />}
           </div>
         </div>
       </div>
