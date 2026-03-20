@@ -213,7 +213,7 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
           </div>
 
           {/* Image - 2 cols */}
-          <div className={`lg:col-span-2 ${isEven ? "" : "lg:order-1"}`}>
+          <div className={`lg:col-span-2 ${isEven ? "" : "lg:order-1"} space-y-4`}>
             {imgSrc && (
               <div className="border border-subtle overflow-hidden group-hover:border-primary/20 transition-colors">
                 <img
@@ -222,6 +222,22 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
                   className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                   loading="lazy"
                 />
+              </div>
+            )}
+            {project.id === "spaetimobil" && (
+              <div className="flex items-center gap-4 p-4 border border-accent-commercial/30 bg-accent-commercial/5">
+                <img
+                  src={spaetimobilAppImg}
+                  alt="SpätiMobil App Preview"
+                  className="w-20 h-auto rounded-lg shadow-lg"
+                />
+                <div>
+                  <span className="inline-block bg-accent-commercial text-primary-foreground px-2 py-0.5 text-[10px] font-bold font-mono uppercase mb-1">
+                    Coming Soon
+                  </span>
+                  <p className="text-sm font-medium text-foreground">SpätiMobil App</p>
+                  <p className="text-xs text-muted-foreground">Bald auch als iOS & Android App verfügbar</p>
+                </div>
               </div>
             )}
           </div>
