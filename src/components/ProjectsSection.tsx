@@ -225,20 +225,7 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
               </div>
             )}
             {project.id === "spaetimobil" && (
-              <div className="flex items-center gap-4 p-4 border border-accent-commercial/30 bg-accent-commercial/5">
-                <img
-                  src={spaetimobilAppImg}
-                  alt="SpätiMobil App Preview"
-                  className="w-20 h-auto rounded-lg shadow-lg"
-                />
-                <div>
-                  <span className="inline-block bg-accent-commercial text-primary-foreground px-2 py-0.5 text-[10px] font-bold font-mono uppercase mb-1">
-                    Coming Soon
-                  </span>
-                  <p className="text-sm font-medium text-foreground">SpätiMobil App</p>
-                  <p className="text-xs text-muted-foreground">Bald auch als iOS & Android App verfügbar</p>
-                </div>
-              </div>
+              <PhoneCarousel />
             )}
           </div>
         </div>
