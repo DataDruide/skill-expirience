@@ -6,6 +6,7 @@ import type { Tables } from "@/integrations/supabase/types";
 import { Button } from "@/components/ui/button";
 
 import spaetimobilImg from "@/assets/spaetimobil-screenshot.png";
+import spaetimobilAppImg from "@/assets/spaetimobil-app.png";
 import pflegefondImg from "@/assets/pflegefond-screenshot.png";
 import fairrideImg from "@/assets/fairride-screenshot.png";
 import accessiwidgetImg from "@/assets/accessiwidget-screenshot.png";
