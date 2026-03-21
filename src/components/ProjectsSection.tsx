@@ -16,6 +16,7 @@ import zeitwohnenImg from "@/assets/zeitwohnen-screenshot.png";
 import mittelerdeImg from "@/assets/mittelerde-screenshot.png";
 import egitarreImg from "@/assets/egitarre-screenshot.png";
 import punzenverzeichnisImg from "@/assets/punzenverzeichnis-screenshot.png";
+import safefloorImg from "@/assets/safefloor-screenshot.png";
 
 type Project = Tables<"projects">;
 
@@ -102,6 +103,16 @@ const fallbackProjects: Partial<Project>[] = [
     testimonial_author: "Team Pflegefond",
   },
   {
+    id: "safefloor",
+    title: "SafeFloor®",
+    subtitle: "IoT Sturzfrühwarnsystem – Hardware & Software",
+    description: "Ein DSGVO-konformes Sturzerkennungssystem für Pflegeeinrichtungen – ohne Kamera, ohne Armband. Erkennt Stürze in Echtzeit mit <1 Sek. Reaktionszeit. Aktuell in der Prototypen-Entwicklung: Platinen-Design, Sensor-Kalibrierung und Firmware.",
+    features: ["Sturzerkennung ohne Kamera – 100% Datenschutz", "< 1 Sekunde Reaktionszeit", "24/7 Überwachung, vollständig anonym", "Aktuell: Platinen-Entwicklung & Prototypenbau"],
+    tech_stack: ["React", "TypeScript", "Node.js", "IoT", "BLE", "Embedded C"],
+    live_url: "https://safefloor.de",
+    accent_color: "green",
+  },
+  {
     id: "punzenverzeichnis",
     title: "Zentrales Punzenverzeichnis",
     subtitle: "SaaS für Goldschmiede & Silberschmiede",
@@ -122,6 +133,7 @@ const fallbackImages: Record<string, string> = {
   mittelerde: mittelerdeImg,
   egitarre: egitarreImg,
   punzenverzeichnis: punzenverzeichnisImg,
+  safefloor: safefloorImg,
 };
 
 const ProjectCard = ({ project, index }: { project: Partial<Project>; index: number }) => {
