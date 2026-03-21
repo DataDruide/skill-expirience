@@ -133,6 +133,7 @@ const fallbackImages: Record<string, string> = {
   mittelerde: mittelerdeImg,
   egitarre: egitarreImg,
   punzenverzeichnis: punzenverzeichnisImg,
+  safefloor: safefloorImg,
 };
 
 const ProjectCard = ({ project, index }: { project: Partial<Project>; index: number }) => {
