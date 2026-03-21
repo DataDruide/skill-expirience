@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 const skillCategories = [
   {
     title: "Frontend & Mobile",
+    accent: "commercial" as const,
     skills: [
       { name: "React", detail: "Mehrere Production Apps" },
       { name: "Flutter", detail: "Cross-Platform & Dozent" },
@@ -14,6 +15,7 @@ const skillCategories = [
   },
   {
     title: "Backend & Daten",
+    accent: "impact" as const,
     skills: [
       { name: "Node.js", detail: "REST & Realtime APIs" },
       { name: "NestJS", detail: "Enterprise-Architektur" },
@@ -25,6 +27,7 @@ const skillCategories = [
   },
   {
     title: "Tools & Methodik",
+    accent: "commercial" as const,
     skills: [
       { name: "Figma", detail: "UX/UI Design & Prototyping" },
       { name: "Git & CI/CD", detail: "Deployment Pipelines" },
@@ -45,14 +48,19 @@ const SkillsSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-16"
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-16"
         >
-          <p className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-4">
-            04 / Skills
+          <div>
+            <p className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-4">
+              04 / Skills
+            </p>
+            <h2 className="font-display font-black text-4xl md:text-5xl uppercase tracking-tight">
+              Tech Stack
+            </h2>
+          </div>
+          <p className="text-sm text-muted-foreground max-w-xs">
+            Technologien, die ich täglich einsetze – von Frontend bis Embedded.
           </p>
-          <h2 className="font-display font-black text-4xl md:text-5xl uppercase tracking-tight">
-            Tech Stack
-          </h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-foreground/5">
@@ -63,22 +71,31 @@ const SkillsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="bg-background p-6 md:p-8 space-y-6"
+              className="bg-background p-6 md:p-8 space-y-6 group"
             >
-              <h3 className="font-display font-black text-lg uppercase tracking-wider text-foreground">
-                {cat.title}
-              </h3>
-              <div className="space-y-3">
-                {cat.skills.map((skill) => (
-                  <div
+              <div className="flex items-center gap-3">
+                <div className={`w-1 h-6 ${cat.accent === "commercial" ? "bg-accent-commercial" : "bg-accent-impact"}`} />
+                <h3 className="font-display font-black text-lg uppercase tracking-wider text-foreground">
+                  {cat.title}
+                </h3>
+              </div>
+              <div className="space-y-0">
+                {cat.skills.map((skill, si) => (
+                  <motion.div
                     key={skill.name}
-                    className="group flex items-baseline justify-between border-b border-subtle pb-2 hover:border-primary/50 transition-colors cursor-default"
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: i * 0.1 + si * 0.05 }}
+                    className={`group/skill flex items-baseline justify-between py-3 border-b border-subtle hover:border-foreground/20 transition-all duration-300 cursor-default`}
                   >
-                    <span className="text-sm text-foreground font-medium">{skill.name}</span>
-                    <span className="text-xs font-mono text-muted-foreground group-hover:text-foreground transition-colors">
+                    <span className="text-sm text-foreground font-medium group-hover/skill:translate-x-1 transition-transform duration-300">
+                      {skill.name}
+                    </span>
+                    <span className="text-xs font-mono text-muted-foreground group-hover/skill:text-foreground transition-colors duration-300">
                       {skill.detail}
                     </span>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
