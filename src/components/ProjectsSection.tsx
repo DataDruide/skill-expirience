@@ -16,6 +16,7 @@ import zeitwohnenImg from "@/assets/zeitwohnen-screenshot.png";
 import mittelerdeImg from "@/assets/mittelerde-screenshot.png";
 import egitarreImg from "@/assets/egitarre-screenshot.png";
 import punzenverzeichnisImg from "@/assets/punzenverzeichnis-screenshot.png";
+import safefloorImg from "@/assets/safefloor-screenshot.png";
 
 type Project = Tables<"projects">;
 
