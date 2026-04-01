@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import profilePhoto from "@/assets/profile-photo.png";
@@ -34,19 +34,19 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center section-spacing relative overflow-hidden">
+    <section className="min-h-screen flex items-center pt-14 pb-16 md:pt-14 md:pb-24 relative overflow-hidden" aria-label="Hero">
       {/* Subtle grid background */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
         backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
         backgroundSize: '60px 60px'
-      }} />
+      }} aria-hidden="true" />
 
       {/* Gradient orbs */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none" aria-hidden="true" />
+      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent/10 rounded-full blur-[120px] pointer-events-none" aria-hidden="true" />
       
       <div className="container-strict w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left: Text content */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -58,7 +58,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-6"
+              className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-5"
             >
               Marcel Zimmermann / Portfolio 2024–2026
             </motion.p>
@@ -82,7 +82,7 @@ const HeroSection = () => {
               </motion.span>
             </h1>
 
-            <div className="space-y-4 mb-8">
+            <div className="space-y-3 mb-8">
               <p className="font-display font-bold text-xl text-foreground">
                 Mobile · Web · Von der Idee bis Production
               </p>
@@ -112,13 +112,13 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7, duration: 0.5 }}
-              className="border-t border-subtle pt-4 flex items-center gap-6"
+              className="border-t border-subtle pt-4 flex flex-wrap items-center gap-4 sm:gap-6"
             >
               <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
                 {time.toLocaleTimeString("de-DE")} · Status: <span className="text-accent-impact">Verfügbar</span>
               </p>
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-accent-impact animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-accent-impact animate-pulse" aria-hidden="true" />
                 <span className="text-xs font-mono text-accent-impact uppercase">Live</span>
               </div>
             </motion.div>
@@ -133,16 +133,18 @@ const HeroSection = () => {
           >
             <div className="relative group">
               {/* Glow effect behind photo */}
-              <div className="absolute -inset-6 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 blur-3xl opacity-40 group-hover:opacity-70 transition-opacity duration-700" />
+              <div className="absolute -inset-6 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 blur-3xl opacity-40 group-hover:opacity-70 transition-opacity duration-700" aria-hidden="true" />
               
               {/* Photo container */}
-              <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
-                <div className="absolute inset-0 border-2 border-primary/20 translate-x-3 translate-y-3 group-hover:translate-x-4 group-hover:translate-y-4 transition-transform duration-500" />
+              <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
+                <div className="absolute inset-0 border-2 border-primary/20 translate-x-3 translate-y-3 group-hover:translate-x-4 group-hover:translate-y-4 transition-transform duration-500" aria-hidden="true" />
                 <div className="relative w-full h-full overflow-hidden border-2 border-subtle bg-secondary group-hover:border-primary/30 transition-colors duration-500">
                   <img 
                     src={profilePhoto} 
                     alt="Marcel Zimmermann – Fullstack Developer" 
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" 
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                    width={384}
+                    height={384}
                   />
                 </div>
                 
@@ -151,24 +153,24 @@ const HeroSection = () => {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.8, duration: 0.5 }}
-                  className="absolute -right-4 md:-right-8 top-8 bg-card/90 backdrop-blur-sm border border-subtle px-4 py-3 shadow-lg"
+                  className="absolute -right-2 sm:-right-4 md:-right-8 top-6 sm:top-8 bg-card/90 backdrop-blur-sm border border-subtle px-3 py-2 sm:px-4 sm:py-3 shadow-lg"
                 >
-                  <p className="text-2xl font-display font-black text-accent-commercial">
-                    <CountUp target={10} suffix="+" />
+                  <p className="text-xl sm:text-2xl font-display font-black text-accent-commercial">
+                    <CountUp target={12} suffix="+" />
                   </p>
-                  <p className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Projekte</p>
+                  <p className="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Projekte</p>
                 </motion.div>
                 
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 1, duration: 0.5 }}
-                  className="absolute -left-4 md:-left-8 bottom-12 bg-card/90 backdrop-blur-sm border border-subtle px-4 py-3 shadow-lg"
+                  className="absolute -left-2 sm:-left-4 md:-left-8 bottom-10 sm:bottom-12 bg-card/90 backdrop-blur-sm border border-subtle px-3 py-2 sm:px-4 sm:py-3 shadow-lg"
                 >
-                  <p className="text-2xl font-display font-black text-accent-impact">
+                  <p className="text-xl sm:text-2xl font-display font-black text-accent-impact">
                     <CountUp target={3} suffix="+" />
                   </p>
-                  <p className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Jahre Dev</p>
+                  <p className="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Jahre Dev</p>
                 </motion.div>
               </div>
             </div>
@@ -181,7 +183,8 @@ const HeroSection = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:block"
+        aria-hidden="true"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}

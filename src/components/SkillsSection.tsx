@@ -41,20 +41,20 @@ const skillCategories = [
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="section-spacing">
+    <section id="skills" className="section-spacing" aria-labelledby="skills-heading">
       <div className="container-strict">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-16"
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12 md:mb-16"
         >
           <div>
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-4">
               04 / Skills
             </p>
-            <h2 className="font-display font-black text-4xl md:text-5xl uppercase tracking-tight">
+            <h2 id="skills-heading" className="font-display font-black text-4xl md:text-5xl uppercase tracking-tight">
               Tech Stack
             </h2>
           </div>
@@ -74,7 +74,7 @@ const SkillsSection = () => {
               className="bg-background p-6 md:p-8 space-y-6 group"
             >
               <div className="flex items-center gap-3">
-                <div className={`w-1 h-6 ${cat.accent === "commercial" ? "bg-accent-commercial" : "bg-accent-impact"}`} />
+                <div className={`w-1 h-6 shrink-0 ${cat.accent === "commercial" ? "bg-accent-commercial" : "bg-accent-impact"}`} aria-hidden="true" />
                 <h3 className="font-display font-black text-lg uppercase tracking-wider text-foreground">
                   {cat.title}
                 </h3>
@@ -87,12 +87,12 @@ const SkillsSection = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: i * 0.1 + si * 0.05 }}
-                    className={`group/skill flex items-baseline justify-between py-3 border-b border-subtle hover:border-foreground/20 transition-all duration-300 cursor-default`}
+                    className="group/skill flex items-baseline justify-between py-3 border-b border-subtle hover:border-foreground/20 transition-all duration-300 cursor-default gap-4"
                   >
                     <span className="text-sm text-foreground font-medium group-hover/skill:translate-x-1 transition-transform duration-300">
                       {skill.name}
                     </span>
-                    <span className="text-xs font-mono text-muted-foreground group-hover/skill:text-foreground transition-colors duration-300">
+                    <span className="text-xs font-mono text-muted-foreground group-hover/skill:text-foreground transition-colors duration-300 text-right shrink-0">
                       {skill.detail}
                     </span>
                   </motion.div>

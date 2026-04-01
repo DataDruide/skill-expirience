@@ -47,20 +47,20 @@ const testimonials = [
 
 const AboutSection = () => {
   return (
-    <section id="ueber" className="section-spacing">
+    <section id="ueber" className="section-spacing" aria-labelledby="ueber-heading">
       <div className="container-strict">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-16"
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12 md:mb-16"
         >
           <div>
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-4">
               01 / Über mich
             </p>
-            <h2 className="font-display font-black text-4xl md:text-5xl uppercase tracking-tight">
+            <h2 id="ueber-heading" className="font-display font-black text-4xl md:text-5xl uppercase tracking-tight">
               Werdegang
             </h2>
           </div>
@@ -70,7 +70,7 @@ const AboutSection = () => {
         </motion.div>
 
         {/* Timeline */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-foreground/5 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-foreground/5 mb-12 md:mb-16">
           {milestones.map((m, i) => (
             <motion.div
               key={i}
@@ -84,7 +84,7 @@ const AboutSection = () => {
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className={`w-8 h-8 flex items-center justify-center ${
+                  <div className={`w-8 h-8 flex items-center justify-center shrink-0 ${
                     m.accent === "commercial" ? "bg-accent-commercial/10" : "bg-accent-impact/10"
                   }`}>
                     <Briefcase className={`h-3.5 w-3.5 ${
@@ -97,7 +97,7 @@ const AboutSection = () => {
                     {m.period}
                   </span>
                 </div>
-                <ArrowUpRight className="h-4 w-4 text-muted-foreground/0 group-hover:text-muted-foreground/50 transition-all duration-300 -translate-x-2 group-hover:translate-x-0" />
+                <ArrowUpRight className="h-4 w-4 text-muted-foreground/0 group-hover:text-muted-foreground/50 transition-all duration-300 -translate-x-2 group-hover:translate-x-0" aria-hidden="true" />
               </div>
               <h3 className="font-display font-bold text-lg text-foreground">
                 {m.role}
@@ -114,14 +114,14 @@ const AboutSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-8"
+          className="mb-6 md:mb-8"
         >
           <p className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-6">
             Referenzen
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {testimonials.map((t, i) => (
             <motion.blockquote
               key={i}
@@ -131,12 +131,12 @@ const AboutSection = () => {
               transition={{ duration: 0.5, delay: i * 0.15 }}
               className="relative border-l-4 border-accent-commercial p-6 bg-secondary/20 hover:bg-secondary/30 transition-colors duration-300 group"
             >
-              <Quote className="h-8 w-8 text-accent-commercial/10 absolute top-4 right-4" />
+              <Quote className="h-8 w-8 text-accent-commercial/10 absolute top-4 right-4" aria-hidden="true" />
               <p className="text-sm italic text-foreground/90 leading-relaxed mb-4 relative z-10">
                 „{t.quote}"
               </p>
               <footer className="flex items-center gap-3">
-                <div className="w-8 h-px bg-accent-commercial/50" />
+                <div className="w-8 h-px bg-accent-commercial/50" aria-hidden="true" />
                 <div>
                   <p className="text-sm font-display font-bold text-foreground">{t.author}</p>
                   <p className="text-xs font-mono text-muted-foreground">{t.role}</p>

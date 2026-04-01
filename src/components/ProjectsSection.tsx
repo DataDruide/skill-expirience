@@ -17,6 +17,8 @@ import mittelerdeImg from "@/assets/mittelerde-screenshot.png";
 import egitarreImg from "@/assets/egitarre-screenshot.png";
 import punzenverzeichnisImg from "@/assets/punzenverzeichnis-screenshot.png";
 import safefloorImg from "@/assets/safefloor-screenshot.png";
+import appauditImg from "@/assets/appaudit-checklist.png";
+import appanalyzerImg from "@/assets/appanalyzer-home.png";
 
 type Project = Tables<"projects">;
 
@@ -42,6 +44,24 @@ const fallbackProjects: Partial<Project>[] = [
     accent_color: "yellow",
     testimonial_quote: "Er hat unseren Späti-Lieferservice von 0 auf 100 gebracht – heute liefern wir jede Nacht an Fabriken und Haushalte.",
     testimonial_author: "Gründer, Spätimobil",
+  },
+  {
+    id: "appaudit",
+    title: "App Audit Buddy Pro",
+    subtitle: "Automatisierte App-Store-Compliance-Prüfung",
+    description: "Eine kostengünstige Alternative zu teuren App-Audit-Tools: Automatische Checklisten für DSGVO, iOS/Android Guidelines, Barrierefreiheit und Code-Qualität. Smart Scan erkennt Probleme in Sekunden – mit konkreten Empfehlungen und PDF-Export.",
+    features: ["89-Punkte-Checkliste (DSGVO, iOS, Android, A11y)", "Smart Scan mit automatischer Code-Analyse", "PDF & Markdown Report-Export", "Free-Tier mit 4 vollständigen App-Scans"],
+    tech_stack: ["React", "TypeScript", "Supabase", "Tailwind CSS", "Node.js"],
+    accent_color: "green",
+  },
+  {
+    id: "appanalyzer",
+    title: "AppAnalyzer Pro",
+    subtitle: "Echtzeit App-Store-Analyse für iOS & Android",
+    description: "Eine kostengünstige Alternative zu Sensor Tower & App Annie: Echtzeit-Daten aus dem App Store & Google Play – Bewertungen, Screenshots, KI-Analyse und ASO-Keywords. Kostenlose App-Suche mit Live-Daten statt teurer Enterprise-Lizenzen.",
+    features: ["Echtzeit App-Store-Daten (iOS & Android)", "KI-gestützte Marktbewertung & ASO-Analyse", "Bewertungsverteilung & Screenshot-Galerie", "Kostenloser Zugang – keine Enterprise-Lizenz nötig"],
+    tech_stack: ["React", "TypeScript", "Node.js", "App Store API", "KI/LLM"],
+    accent_color: "yellow",
   },
   {
     id: "openforge",
@@ -134,6 +154,8 @@ const fallbackImages: Record<string, string> = {
   egitarre: egitarreImg,
   punzenverzeichnis: punzenverzeichnisImg,
   safefloor: safefloorImg,
+  appaudit: appauditImg,
+  appanalyzer: appanalyzerImg,
 };
 
 const ProjectCard = ({ project, index }: { project: Partial<Project>; index: number }) => {
@@ -154,15 +176,16 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
   };
 
   return (
-    <motion.div
+    <motion.article
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6 }}
       className={`border-l-4 ${accentBorder} group`}
+      aria-label={`Projekt: ${project.title}`}
     >
       <div className="p-6 md:p-10 bg-secondary/20 hover:bg-secondary/40 transition-all duration-300">
-        <div className={`grid grid-cols-1 lg:grid-cols-5 gap-8 ${isEven ? "" : "lg:direction-rtl"}`}>
+        <div className={`grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 ${isEven ? "" : "lg:direction-rtl"}`}>
           {/* Text content - 3 cols */}
           <div className={`lg:col-span-3 space-y-5 ${isEven ? "" : "lg:order-2"}`}>
             <div>
@@ -177,16 +200,16 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
 
             <p className="text-muted-foreground leading-relaxed text-sm">{project.description}</p>
 
-            <ul className="space-y-2 text-sm text-muted-foreground">
+            <ul className="space-y-2 text-sm text-muted-foreground" role="list">
               {features.map((f, i) => (
                 <li key={i} className="flex items-start gap-2">
-                  <span className={`${accentText} mt-0.5`}>▸</span>
+                  <span className={`${accentText} mt-0.5 shrink-0`} aria-hidden="true">▸</span>
                   {String(f)}
                 </li>
               ))}
             </ul>
 
-            <div className="flex flex-wrap gap-2 pt-2">
+            <div className="flex flex-wrap gap-2 pt-2" aria-label="Tech Stack">
               {(project.tech_stack || []).map(t => (
                 <span key={t} className={techTag}>{t}</span>
               ))}
@@ -231,7 +254,7 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
               <div className="border border-subtle overflow-hidden group-hover:border-primary/20 transition-colors">
                 <img
                   src={imgSrc}
-                  alt={project.title || ""}
+                  alt={`Screenshot von ${project.title}`}
                   className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                   loading="lazy"
                 />
@@ -242,7 +265,7 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
           </div>
         </div>
       </div>
-    </motion.div>
+    </motion.article>
   );
 };
 
@@ -264,8 +287,8 @@ const ProjectsSection = () => {
   }, []);
 
   return (
-    <section id="projekte" className="section-spacing">
-      <div className="container-strict space-y-16">
+    <section id="projekte" className="section-spacing" aria-labelledby="projekte-heading">
+      <div className="container-strict space-y-12 md:space-y-16">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -275,7 +298,7 @@ const ProjectsSection = () => {
         >
           <div>
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-4">03 / Projekte</p>
-            <h2 className="font-display font-black text-4xl md:text-5xl uppercase tracking-tight">
+            <h2 id="projekte-heading" className="font-display font-black text-4xl md:text-5xl uppercase tracking-tight">
               Fertige B2B & SaaS Lösungen
             </h2>
           </div>
