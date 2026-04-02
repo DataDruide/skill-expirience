@@ -263,6 +263,7 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
             )}
             {project.id === "spaetimobil" && <PhoneCarousel />}
             {project.id === "accessiwidget" && <AccessiPdfShowcase />}
+            {project.id === "appanalyzer" && <AppAnalyzerShowcase />}
           </div>
         </div>
       </div>
