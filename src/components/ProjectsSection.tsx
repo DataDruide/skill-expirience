@@ -6,6 +6,7 @@ import type { Tables } from "@/integrations/supabase/types";
 import { Button } from "@/components/ui/button";
 import PhoneCarousel from "@/components/PhoneCarousel";
 import AccessiPdfShowcase from "@/components/AccessiPdfShowcase";
+import AppAnalyzerShowcase from "@/components/AppAnalyzerShowcase";
 
 import spaetimobilImg from "@/assets/spaetimobil-screenshot.png";
 import pflegefondImg from "@/assets/pflegefond-screenshot.png";
@@ -262,6 +263,7 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
             )}
             {project.id === "spaetimobil" && <PhoneCarousel />}
             {project.id === "accessiwidget" && <AccessiPdfShowcase />}
+            {project.id === "appanalyzer" && <AppAnalyzerShowcase />}
           </div>
         </div>
       </div>
