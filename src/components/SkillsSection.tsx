@@ -71,7 +71,7 @@ const SkillsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="bg-background p-6 md:p-8 space-y-6 group"
+              className="bg-background p-6 md:p-8 space-y-6 group hover:bg-secondary/20 transition-all duration-500"
             >
               <div className="flex items-center gap-3">
                 <div className={`w-1 h-6 shrink-0 ${cat.accent === "commercial" ? "bg-accent-commercial" : "bg-accent-impact"}`} aria-hidden="true" />

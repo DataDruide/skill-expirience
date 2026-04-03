@@ -41,9 +41,19 @@ const HeroSection = () => {
         backgroundSize: '60px 60px'
       }} aria-hidden="true" />
 
-      {/* Gradient orbs */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none" aria-hidden="true" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent/10 rounded-full blur-[120px] pointer-events-none" aria-hidden="true" />
+      {/* Animated gradient orbs */}
+      <motion.div
+        animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
+        transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
+        className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none"
+        aria-hidden="true"
+      />
+      <motion.div
+        animate={{ x: [0, -20, 0], y: [0, 30, 0] }}
+        transition={{ repeat: Infinity, duration: 15, ease: "easeInOut" }}
+        className="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent/10 rounded-full blur-[120px] pointer-events-none"
+        aria-hidden="true"
+      />
       
       <div className="container-strict w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -138,11 +148,11 @@ const HeroSection = () => {
               {/* Photo container */}
               <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
                 <div className="absolute inset-0 border-2 border-primary/20 translate-x-3 translate-y-3 group-hover:translate-x-4 group-hover:translate-y-4 transition-transform duration-500" aria-hidden="true" />
-                <div className="relative w-full h-full overflow-hidden border-2 border-subtle bg-secondary group-hover:border-primary/30 transition-colors duration-500">
+                <div className="relative w-full h-full overflow-hidden border-2 border-subtle bg-secondary group-hover:border-primary/30 transition-all duration-500 group-hover:shadow-[0_0_40px_-10px_hsl(var(--primary)/0.3)]">
                   <img 
                     src={profilePhoto} 
                     alt="Marcel Zimmermann – Fullstack Developer" 
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-[1.03]"
                     width={384}
                     height={384}
                   />

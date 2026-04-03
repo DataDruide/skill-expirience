@@ -78,9 +78,9 @@ const AboutSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className={`bg-background p-6 md:p-8 space-y-3 group hover:bg-secondary/30 transition-all duration-300 border-l-2 ${
+              className={`bg-background p-6 md:p-8 space-y-3 group hover:bg-secondary/30 transition-all duration-500 border-l-2 ${
                 m.accent === "commercial" ? "border-l-transparent hover:border-accent-commercial" : "border-l-transparent hover:border-accent-impact"
-              }`}
+              } hover:shadow-md`}
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -129,7 +129,7 @@ const AboutSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="relative border-l-4 border-accent-commercial p-6 bg-secondary/20 hover:bg-secondary/30 transition-colors duration-300 group"
+              className="relative border-l-4 border-accent-commercial p-6 bg-secondary/20 hover:bg-secondary/30 transition-all duration-500 group hover:shadow-lg hover:-translate-y-0.5"
             >
               <Quote className="h-8 w-8 text-accent-commercial/10 absolute top-4 right-4" aria-hidden="true" />
               <p className="text-sm italic text-foreground/90 leading-relaxed mb-4 relative z-10">

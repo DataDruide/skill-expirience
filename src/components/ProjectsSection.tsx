@@ -181,11 +181,13 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6 }}
-      className={`border-l-4 ${accentBorder} group`}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      className={`border-l-4 ${accentBorder} group relative overflow-hidden`}
       aria-label={`Projekt: ${project.title}`}
     >
-      <div className="p-6 md:p-10 bg-secondary/20 hover:bg-secondary/40 transition-all duration-300">
+      {/* Hover glow */}
+      <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none ${isYellow ? "bg-gradient-to-r from-[hsl(var(--accent-commercial)/0.03)] to-transparent" : "bg-gradient-to-r from-[hsl(var(--accent-impact)/0.03)] to-transparent"}`} aria-hidden="true" />
+      <div className="relative p-6 md:p-10 bg-secondary/20 hover:bg-secondary/35 transition-all duration-500">
         <div className={`grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 ${isEven ? "" : "lg:direction-rtl"}`}>
           {/* Text content - 3 cols */}
           <div className={`lg:col-span-3 space-y-5 ${isEven ? "" : "lg:order-2"}`}>
@@ -252,11 +254,11 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
           {/* Image - 2 cols */}
           <div className={`lg:col-span-2 ${isEven ? "" : "lg:order-1"} space-y-4`}>
             {imgSrc && (
-              <div className="border border-subtle overflow-hidden group-hover:border-primary/20 transition-colors">
+              <div className="border border-subtle overflow-hidden group-hover:border-primary/20 transition-all duration-500 group-hover:shadow-lg">
                 <img
                   src={imgSrc}
                   alt={`Screenshot von ${project.title}`}
-                  className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                  className="w-full h-auto object-cover transition-all duration-700 group-hover:scale-[1.03]"
                   loading="lazy"
                 />
               </div>
