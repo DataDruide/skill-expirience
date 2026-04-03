@@ -57,7 +57,7 @@ const ContactSection = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={item.onClick ? (e) => { e.preventDefault(); item.onClick?.(); } : undefined}
-                className="bg-background p-5 sm:p-6 hover:bg-secondary/40 transition-all duration-300 group relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                className="bg-background p-5 sm:p-6 hover:bg-secondary/40 transition-all duration-500 group relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary hover:-translate-y-0.5 hover:shadow-md"
               >
                 <div className="flex items-start justify-between">
                   <item.icon className="h-4 w-4 text-muted-foreground group-hover:text-primary mb-3 transition-colors duration-300" />
