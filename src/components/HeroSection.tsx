@@ -41,9 +41,19 @@ const HeroSection = () => {
         backgroundSize: '60px 60px'
       }} aria-hidden="true" />
 
-      {/* Gradient orbs */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none" aria-hidden="true" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent/10 rounded-full blur-[120px] pointer-events-none" aria-hidden="true" />
+      {/* Animated gradient orbs */}
+      <motion.div
+        animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
+        transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
+        className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none"
+        aria-hidden="true"
+      />
+      <motion.div
+        animate={{ x: [0, -20, 0], y: [0, 30, 0] }}
+        transition={{ repeat: Infinity, duration: 15, ease: "easeInOut" }}
+        className="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent/10 rounded-full blur-[120px] pointer-events-none"
+        aria-hidden="true"
+      />
       
       <div className="container-strict w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
