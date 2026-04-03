@@ -78,9 +78,9 @@ const AboutSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className={`bg-background p-6 md:p-8 space-y-3 group hover:bg-secondary/30 transition-all duration-300 border-l-2 ${
+              className={`bg-background p-6 md:p-8 space-y-3 group hover:bg-secondary/30 transition-all duration-500 border-l-2 ${
                 m.accent === "commercial" ? "border-l-transparent hover:border-accent-commercial" : "border-l-transparent hover:border-accent-impact"
-              }`}
+              } hover:shadow-md`}
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
