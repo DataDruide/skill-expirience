@@ -254,11 +254,11 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
           {/* Image - 2 cols */}
           <div className={`lg:col-span-2 ${isEven ? "" : "lg:order-1"} space-y-4`}>
             {imgSrc && (
-              <div className="border border-subtle overflow-hidden group-hover:border-primary/20 transition-colors">
+              <div className="border border-subtle overflow-hidden group-hover:border-primary/20 transition-all duration-500 group-hover:shadow-lg">
                 <img
                   src={imgSrc}
                   alt={`Screenshot von ${project.title}`}
-                  className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                  className="w-full h-auto object-cover transition-all duration-700 group-hover:scale-[1.03]"
                   loading="lazy"
                 />
               </div>

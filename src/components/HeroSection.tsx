@@ -148,11 +148,11 @@ const HeroSection = () => {
               {/* Photo container */}
               <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
                 <div className="absolute inset-0 border-2 border-primary/20 translate-x-3 translate-y-3 group-hover:translate-x-4 group-hover:translate-y-4 transition-transform duration-500" aria-hidden="true" />
-                <div className="relative w-full h-full overflow-hidden border-2 border-subtle bg-secondary group-hover:border-primary/30 transition-colors duration-500">
+                <div className="relative w-full h-full overflow-hidden border-2 border-subtle bg-secondary group-hover:border-primary/30 transition-all duration-500 group-hover:shadow-[0_0_40px_-10px_hsl(var(--primary)/0.3)]">
                   <img 
                     src={profilePhoto} 
                     alt="Marcel Zimmermann – Fullstack Developer" 
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-[1.03]"
                     width={384}
                     height={384}
                   />
