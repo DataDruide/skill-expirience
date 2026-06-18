@@ -108,6 +108,12 @@ const AdminPage = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Helmet>
+        <title>Admin – Marcel Zimmermann</title>
+        <meta name="description" content="Admin-Bereich zur Verwaltung von Projekten und Anfragen." />
+        <meta name="robots" content="noindex, nofollow" />
+        <link rel="canonical" href="https://code-craft-impact.lovable.app/admin" />
+      </Helmet>
       <header className="border-b border-subtle">
         <div className="container-strict py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
