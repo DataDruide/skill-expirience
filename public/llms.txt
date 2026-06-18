@@ -1,0 +1,7 @@
+# Marcel Zimmermann – Fullstack Developer
+
+> Portfolio von Marcel Zimmermann, Fullstack Developer mit Fokus auf B2B/SaaS-Lösungen und Social Impact Projekte. Stack: React, Flutter, Swift, Node.js, TypeScript, PostgreSQL.
+
+## Pages
+
+- [Startseite](/): Übersicht, Projekte (Commercial & Social Impact), Skills, Live-Dashboard und Kontakt.

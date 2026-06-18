@@ -104,10 +104,12 @@ const ContactForm = () => {
     <form onSubmit={handleSubmit} className="space-y-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-1.5">
-          <label className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
+          <label htmlFor="contact-name" className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
             Name *
           </label>
           <Input
+            id="contact-name"
+            name="name"
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
             placeholder="Max Mustermann"
@@ -117,10 +119,12 @@ const ContactForm = () => {
         </div>
 
         <div className="space-y-1.5">
-          <label className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
+          <label htmlFor="contact-email" className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
             E-Mail *
           </label>
           <Input
+            id="contact-email"
+            name="email"
             type="email"
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -133,10 +137,12 @@ const ContactForm = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-1.5">
-          <label className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
+          <label htmlFor="contact-company" className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
             Unternehmen
           </label>
           <Input
+            id="contact-company"
+            name="company"
             value={form.company}
             onChange={(e) => setForm({ ...form, company: e.target.value })}
             placeholder="Firma GmbH"
@@ -145,10 +151,12 @@ const ContactForm = () => {
         </div>
 
         <div className="space-y-1.5">
-          <label className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
+          <label htmlFor="contact-project" className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
             Projekt-Interesse
           </label>
           <select
+            id="contact-project"
+            name="project_id"
             value={form.project_id}
             onChange={(e) => setForm({ ...form, project_id: e.target.value })}
             className="w-full h-11 bg-secondary/40 border border-foreground/10 text-foreground px-3 text-sm rounded-none focus:outline-none focus:ring-1 focus:ring-primary"
@@ -164,10 +172,12 @@ const ContactForm = () => {
       </div>
 
       <div className="space-y-1.5">
-        <label className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
+        <label htmlFor="contact-message" className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
           Nachricht *
         </label>
         <Textarea
+          id="contact-message"
+          name="message"
           value={form.message}
           onChange={(e) => setForm({ ...form, message: e.target.value })}
           placeholder="Erzähl mir von deinem Projekt..."
@@ -175,6 +185,7 @@ const ContactForm = () => {
         />
         {errors.message && <p className="text-xs text-destructive">{errors.message}</p>}
       </div>
+
 
       <Button
         type="submit"

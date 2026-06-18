@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
@@ -9,6 +10,15 @@ import ContactSection from "@/components/ContactSection";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Helmet>
+        <title>Marcel Zimmermann – Fullstack Developer Portfolio</title>
+        <meta name="description" content="Fullstack Developer Portfolio von Marcel Zimmermann: React, Flutter, Swift & Node.js – B2B, SaaS und Social Impact Projekte." />
+        <link rel="canonical" href="https://code-craft-impact.lovable.app/" />
+        <meta property="og:title" content="Marcel Zimmermann – Fullstack Developer Portfolio" />
+        <meta property="og:description" content="Fullstack Developer Portfolio: React, Flutter, Swift & Node.js – B2B, SaaS und Social Impact Projekte." />
+        <meta property="og:url" content="https://code-craft-impact.lovable.app/" />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <Navbar />
       <HeroSection />
       <AboutSection />

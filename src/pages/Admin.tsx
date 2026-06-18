@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -8,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Plus, Pencil, Trash2, Eye, EyeOff, LogOut, ArrowLeft, GripVertical, Save, MessageSquare, LayoutList } from "lucide-react";
 import type { Tables } from "@/integrations/supabase/types";
 import AdminRequests from "@/components/AdminRequests";
+
 
 type Project = Tables<"projects">;
 
@@ -106,6 +108,12 @@ const AdminPage = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Helmet>
+        <title>Admin – Marcel Zimmermann</title>
+        <meta name="description" content="Admin-Bereich zur Verwaltung von Projekten und Anfragen." />
+        <meta name="robots" content="noindex, nofollow" />
+        <link rel="canonical" href="https://code-craft-impact.lovable.app/admin" />
+      </Helmet>
       <header className="border-b border-subtle">
         <div className="container-strict py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
