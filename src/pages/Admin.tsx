@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -8,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Plus, Pencil, Trash2, Eye, EyeOff, LogOut, ArrowLeft, GripVertical, Save, MessageSquare, LayoutList } from "lucide-react";
 import type { Tables } from "@/integrations/supabase/types";
 import AdminRequests from "@/components/AdminRequests";
+
 
 type Project = Tables<"projects">;
 

@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -12,6 +13,12 @@ const NotFound = () => {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background">
+      <Helmet>
+        <title>404 – Seite nicht gefunden</title>
+        <meta name="description" content="Die angeforderte Seite existiert nicht." />
+        <meta name="robots" content="noindex" />
+      </Helmet>
+
       <div className="text-center space-y-6">
         <p className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground">
           Fehler 404

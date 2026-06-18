@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
+
 
 const LoginPage = () => {
   const { signIn, signUp } = useAuth();
@@ -34,13 +36,24 @@ const LoginPage = () => {
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center">
+      <Helmet>
+        <title>Admin Login – Marcel Zimmermann</title>
+        <meta name="description" content="Login zum Admin-Bereich des Portfolios von Marcel Zimmermann." />
+        <meta name="robots" content="noindex, nofollow" />
+        <link rel="canonical" href="https://code-craft-impact.lovable.app/login" />
+        <meta property="og:title" content="Admin Login – Marcel Zimmermann" />
+        <meta property="og:description" content="Login zum Admin-Bereich." />
+        <meta property="og:url" content="https://code-craft-impact.lovable.app/login" />
+      </Helmet>
       <div className="w-full max-w-sm p-8 border border-subtle bg-secondary/20">
         <h1 className="font-display font-black text-2xl uppercase tracking-tight mb-6 text-foreground">
           {isSignUp ? "Registrieren" : "Admin Login"}
         </h1>
 
         <form onSubmit={handleSubmit} className="space-y-4">
+          <label htmlFor="login-email" className="sr-only">E-Mail</label>
           <Input
+            id="login-email"
             type="email"
             placeholder="Email"
             value={email}
@@ -48,7 +61,9 @@ const LoginPage = () => {
             required
             className="bg-background border-foreground/10 text-foreground rounded-none"
           />
+          <label htmlFor="login-password" className="sr-only">Passwort</label>
           <Input
+            id="login-password"
             type="password"
             placeholder="Passwort"
             value={password}
@@ -56,6 +71,7 @@ const LoginPage = () => {
             required
             className="bg-background border-foreground/10 text-foreground rounded-none"
           />
+
 
           {error && (
             <p className="text-xs text-destructive font-mono">{error}</p>
