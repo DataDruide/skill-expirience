@@ -20,6 +20,9 @@ import punzenverzeichnisImg from "@/assets/punzenverzeichnis-screenshot.png";
 import safefloorImg from "@/assets/safefloor-screenshot.png";
 import appauditImg from "@/assets/appaudit-checklist.png";
 import appanalyzerImg from "@/assets/appanalyzer-home.png";
+import zentralverbandAsset from "@/assets/zentralverband-screenshot.png.asset.json";
+
+const zentralverbandImg = zentralverbandAsset.url;
 
 type Project = Tables<"projects">;
 
@@ -142,6 +145,16 @@ const fallbackProjects: Partial<Project>[] = [
     tech_stack: ["React", "TypeScript", "Supabase", "Tailwind CSS", "PostgreSQL"],
     accent_color: "yellow",
   },
+  {
+    id: "zentralverband",
+    title: "Zentralverband Gold- & Silberschmiede",
+    subtitle: "Verbandsplattform mit Punzenregister & Mitgliederbereich",
+    description: "Eine moderne Web-Plattform für den traditionsreichen Zentralverband der Goldschmiede & Silberschmiede e.V. (seit 1900): Verbandsinfos, Fortbildung, Wettbewerbe, Mitgliederverzeichnis und ein digitales Punzenregister – verbunden mit einem Login-Bereich für Mitgliedsbetriebe.",
+    features: ["Mitgliederverzeichnis & Login-Bereich", "Aktuelles, Fortbildungen, Wettbewerbe & Ausbildung", "Editorial-Design mit Serif-Typografie & Imagefilm", "Integriertes Punzenregister für Edelmetall-Stempel"],
+    tech_stack: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "CMS"],
+    live_url: "https://zentralverband-gold-silberschmiede.com",
+    accent_color: "yellow",
+  },
 ];
 
 const fallbackImages: Record<string, string> = {
@@ -157,6 +170,7 @@ const fallbackImages: Record<string, string> = {
   safefloor: safefloorImg,
   appaudit: appauditImg,
   appanalyzer: appanalyzerImg,
+  zentralverband: zentralverbandImg,
 };
 
 const ProjectCard = ({ project, index }: { project: Partial<Project>; index: number }) => {
