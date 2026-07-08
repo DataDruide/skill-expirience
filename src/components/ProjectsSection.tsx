@@ -21,8 +21,10 @@ import safefloorImg from "@/assets/safefloor-screenshot.png";
 import appauditImg from "@/assets/appaudit-checklist.png";
 import appanalyzerImg from "@/assets/appanalyzer-home.png";
 import zentralverbandAsset from "@/assets/zentralverband-screenshot.png.asset.json";
+import helveticaIntelligenceAsset from "@/assets/helvetica-intelligence-screenshot.png.asset.json";
 
 const zentralverbandImg = zentralverbandAsset.url;
+const helveticaIntelligenceImg = helveticaIntelligenceAsset.url;
 
 type Project = Tables<"projects">;
 
