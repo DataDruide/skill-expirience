@@ -22,9 +22,17 @@ import appauditImg from "@/assets/appaudit-checklist.png";
 import appanalyzerImg from "@/assets/appanalyzer-home.png";
 import zentralverbandAsset from "@/assets/zentralverband-screenshot.png.asset.json";
 import helveticaIntelligenceAsset from "@/assets/helvetica-intelligence-screenshot.png.asset.json";
+import helveticaCopilotAsset from "@/assets/helvetica-intelligence-copilot.png.asset.json";
+import helveticaLagezentrumAsset from "@/assets/helvetica-intelligence-lagezentrum.png.asset.json";
+import helveticaCockpitAsset from "@/assets/helvetica-intelligence-cockpit.png.asset.json";
 
 const zentralverbandImg = zentralverbandAsset.url;
 const helveticaIntelligenceImg = helveticaIntelligenceAsset.url;
+const helveticaGallery = [
+  { url: helveticaCockpitAsset.url, caption: "Operator-Cockpit mit Live-Kennzahlen" },
+  { url: helveticaLagezentrumAsset.url, caption: "Lagezentrum – Netzwerkgraph & Ereignisfeed" },
+  { url: helveticaCopilotAsset.url, caption: "Orakel KI-Copilot mit Quellenbelegen" },
+];
 
 type Project = Tables<"projects">;
 
@@ -297,6 +305,26 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
             {project.id === "spaetimobil" && <PhoneCarousel />}
             {project.id === "accessiwidget" && <AccessiPdfShowcase />}
             {project.id === "appanalyzer" && <AppAnalyzerShowcase />}
+            {project.id === "helvetica-intelligence" && (
+              <div className="grid grid-cols-1 gap-3">
+                {helveticaGallery.map((g, i) => (
+                  <figure
+                    key={i}
+                    className="border border-subtle overflow-hidden bg-secondary/20 group/thumb"
+                  >
+                    <img
+                      src={g.url}
+                      alt={g.caption}
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover/thumb:scale-[1.02]"
+                      loading="lazy"
+                    />
+                    <figcaption className="px-3 py-2 text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground border-t border-subtle">
+                      {g.caption}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>

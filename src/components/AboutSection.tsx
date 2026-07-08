@@ -3,6 +3,20 @@ import { Briefcase, Quote, ArrowUpRight } from "lucide-react";
 
 const milestones = [
   {
+    period: "Seit 07/2026",
+    role: "CEO & Gründer",
+    company: "Zimmermann Digital Solutions",
+    detail: "Gründung und Leitung einer eigenen Software-Entwicklungsfirma mit Fokus auf B2B-SaaS, Mobile Apps und KI-gestützte Enterprise-Lösungen. Verantwortlich für Strategie, Kundenakquise, Tech-Stack, Team und Delivery – vom Sales-Pitch bis zur Production-Deployment.",
+    accent: "commercial" as const,
+  },
+  {
+    period: "03/2026 – 06/2026",
+    role: "Geschäftsführer & Tech-Lead",
+    company: "Spätimobil (Exit)",
+    detail: "Aufbau und operative Leitung eines 24/7-Späti-Lieferservices: Tech-Plattform, Fahrer-Ops, Marketing und Kundenbindung. Innerhalb von 4 Monaten von 0 auf profitable Umsatzbasis skaliert und erfolgreich an Nachfolger verkauft.",
+    accent: "commercial" as const,
+  },
+  {
     period: "2025",
     role: "Freelance Frontend Developer",
     company: "User-Aid UG",
@@ -65,7 +79,7 @@ const AboutSection = () => {
             </h2>
           </div>
           <p className="text-sm text-muted-foreground max-w-xs">
-            Von der Ausbildung zum Fullstack Developer – mit Stationen bei Startups, als Dozent und Freelancer.
+            Vom Ausbildungs­absolventen zum CEO – Stationen bei Startups, als Dozent, Freelancer, Gründer und Geschäftsführer.
           </p>
         </motion.div>
 
