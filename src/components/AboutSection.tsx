@@ -79,7 +79,7 @@ const AboutSection = () => {
             </h2>
           </div>
           <p className="text-sm text-muted-foreground max-w-xs">
-            Von der Ausbildung zum Fullstack Developer – mit Stationen bei Startups, als Dozent und Freelancer.
+            Vom Ausbildungs­absolventen zum CEO – Stationen bei Startups, als Dozent, Freelancer, Gründer und Geschäftsführer.
           </p>
         </motion.div>
 
