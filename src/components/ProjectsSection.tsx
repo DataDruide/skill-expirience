@@ -157,6 +157,20 @@ const fallbackProjects: Partial<Project>[] = [
     live_url: "https://zentralverband-gold-silberschmiede.com",
     accent_color: "yellow",
   },
+  {
+    id: "helvetica-intelligence",
+    title: "Helvetica Intelligence",
+    subtitle: "Enterprise Intelligence-Plattform mit KI-Copilot",
+    description: "Eine Enterprise-Intelligence-Plattform, die Dokumente, Messenger-Daten, Standorte, Unternehmenssysteme und offene Quellen (OSINT) in einem zentralen Lagezentrum bündelt. Echtzeit-Analyse mit KI, Netzwerk-Graphen und Geo-Intelligence – inklusive Orakel-Copilot, der Fragen mit vollständigen Quellenbelegen beantwortet.",
+    features: [
+      "Zentrales Lagezentrum mit Live-Netzwerkgraph & Ereignisfeed",
+      "Orakel-KI-Copilot mit Quellenbelegen (#chat, #geo, #graph)",
+      "Workflow von Import → Kortex → Suche → Visier → Fusion",
+      "Editorial UI mit Serif-Display-Type & Enterprise-Cockpit",
+    ],
+    tech_stack: ["React", "TypeScript", "Supabase", "KI/LLM", "Graph DB", "Tailwind CSS"],
+    accent_color: "yellow",
+  },
 ];
 
 const fallbackImages: Record<string, string> = {
@@ -173,6 +187,7 @@ const fallbackImages: Record<string, string> = {
   appaudit: appauditImg,
   appanalyzer: appanalyzerImg,
   zentralverband: zentralverbandImg,
+  "helvetica-intelligence": helveticaIntelligenceImg,
 };
 
 const ProjectCard = ({ project, index }: { project: Partial<Project>; index: number }) => {
