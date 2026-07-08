@@ -305,6 +305,26 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
             {project.id === "spaetimobil" && <PhoneCarousel />}
             {project.id === "accessiwidget" && <AccessiPdfShowcase />}
             {project.id === "appanalyzer" && <AppAnalyzerShowcase />}
+            {project.id === "helvetica-intelligence" && (
+              <div className="grid grid-cols-1 gap-3">
+                {helveticaGallery.map((g, i) => (
+                  <figure
+                    key={i}
+                    className="border border-subtle overflow-hidden bg-secondary/20 group/thumb"
+                  >
+                    <img
+                      src={g.url}
+                      alt={g.caption}
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover/thumb:scale-[1.02]"
+                      loading="lazy"
+                    />
+                    <figcaption className="px-3 py-2 text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground border-t border-subtle">
+                      {g.caption}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
