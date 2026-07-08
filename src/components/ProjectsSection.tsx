@@ -22,9 +22,17 @@ import appauditImg from "@/assets/appaudit-checklist.png";
 import appanalyzerImg from "@/assets/appanalyzer-home.png";
 import zentralverbandAsset from "@/assets/zentralverband-screenshot.png.asset.json";
 import helveticaIntelligenceAsset from "@/assets/helvetica-intelligence-screenshot.png.asset.json";
+import helveticaCopilotAsset from "@/assets/helvetica-intelligence-copilot.png.asset.json";
+import helveticaLagezentrumAsset from "@/assets/helvetica-intelligence-lagezentrum.png.asset.json";
+import helveticaCockpitAsset from "@/assets/helvetica-intelligence-cockpit.png.asset.json";
 
 const zentralverbandImg = zentralverbandAsset.url;
 const helveticaIntelligenceImg = helveticaIntelligenceAsset.url;
+const helveticaGallery = [
+  { url: helveticaCockpitAsset.url, caption: "Operator-Cockpit mit Live-Kennzahlen" },
+  { url: helveticaLagezentrumAsset.url, caption: "Lagezentrum – Netzwerkgraph & Ereignisfeed" },
+  { url: helveticaCopilotAsset.url, caption: "Orakel KI-Copilot mit Quellenbelegen" },
+];
 
 type Project = Tables<"projects">;
 
