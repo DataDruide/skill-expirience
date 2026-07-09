@@ -28,7 +28,7 @@ const ContactSection = () => {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
             <div>
               <p className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-4">
-                05 / Kontakt
+                06 / Kontakt
               </p>
               <h2 id="kontakt-heading" className="font-display font-black text-4xl md:text-5xl uppercase tracking-tight">
                 Projekt starten
