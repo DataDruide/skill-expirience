@@ -302,7 +302,7 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
                 <img
                   src={imgSrc}
                   alt={`Screenshot von ${project.title}`}
-                  className="w-full aspect-[16/10] object-cover transition-all duration-700 group-hover:scale-[1.03]"
+                  className="w-full aspect-[16/10] object-contain bg-secondary/30 transition-all duration-700 group-hover:scale-[1.02]"
                   loading="lazy"
                   decoding="async"
                   onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
