@@ -293,35 +293,47 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
           {/* Image - 2 cols */}
           <div className={`lg:col-span-2 ${isEven ? "" : "lg:order-1"} space-y-4`}>
             {imgSrc && (
-              <div className="border border-subtle overflow-hidden group-hover:border-primary/20 transition-all duration-500 group-hover:shadow-lg">
+              <div className="relative border border-subtle overflow-hidden group-hover:border-primary/20 transition-all duration-500 group-hover:shadow-2xl">
                 <img
                   src={imgSrc}
                   alt={`Screenshot von ${project.title}`}
                   className="w-full h-auto object-cover transition-all duration-700 group-hover:scale-[1.03]"
                   loading="lazy"
+                  decoding="async"
+                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
                 />
+                <div className={`pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${isYellow ? "bg-gradient-to-tr from-accent-commercial/10 via-transparent to-transparent" : "bg-gradient-to-tr from-accent-impact/10 via-transparent to-transparent"}`} />
               </div>
             )}
             {project.id === "spaetimobil" && <PhoneCarousel />}
             {project.id === "accessiwidget" && <AccessiPdfShowcase />}
             {project.id === "appanalyzer" && <AppAnalyzerShowcase />}
             {project.id === "helvetica-intelligence" && (
-              <div className="grid grid-cols-1 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
                 {helveticaGallery.map((g, i) => (
-                  <figure
+                  <motion.figure
                     key={i}
-                    className="border border-subtle overflow-hidden bg-secondary/20 group/thumb"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.5, delay: 0.1 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    className={`relative border border-subtle overflow-hidden bg-secondary/20 group/thumb hover:border-accent-commercial/40 transition-all duration-500 hover:shadow-xl ${i === 1 ? "lg:ml-4" : ""} ${i === 2 ? "lg:mr-4" : ""}`}
                   >
+                    <div className="absolute top-2 left-2 z-10 text-[9px] font-mono uppercase tracking-[0.25em] text-accent-commercial bg-background/80 backdrop-blur px-1.5 py-0.5 border border-accent-commercial/30">
+                      {String(i + 1).padStart(2, "0")}
+                    </div>
                     <img
                       src={g.url}
                       alt={g.caption}
-                      className="w-full h-auto object-cover transition-transform duration-700 group-hover/thumb:scale-[1.02]"
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover/thumb:scale-[1.04]"
                       loading="lazy"
+                      decoding="async"
+                      onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
                     />
                     <figcaption className="px-3 py-2 text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground border-t border-subtle">
                       {g.caption}
                     </figcaption>
-                  </figure>
+                  </motion.figure>
                 ))}
               </div>
             )}
