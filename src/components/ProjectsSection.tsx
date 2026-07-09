@@ -26,12 +26,17 @@ import helveticaCopilotAsset from "@/assets/helvetica-intelligence-copilot.png.a
 import helveticaLagezentrumAsset from "@/assets/helvetica-intelligence-lagezentrum.png.asset.json";
 import helveticaCockpitAsset from "@/assets/helvetica-intelligence-cockpit.png.asset.json";
 
-const zentralverbandImg = zentralverbandAsset.url;
-const helveticaIntelligenceImg = helveticaIntelligenceAsset.url;
+const LOVABLE_ASSET_ORIGIN = "https://code-craft-impact.lovable.app";
+
+const resolveLovableAssetUrl = (url: string) =>
+  url.startsWith("/__l5e/assets-v1/") ? `${LOVABLE_ASSET_ORIGIN}${url}` : url;
+
+const zentralverbandImg = resolveLovableAssetUrl(zentralverbandAsset.url);
+const helveticaIntelligenceImg = resolveLovableAssetUrl(helveticaIntelligenceAsset.url);
 const helveticaGallery = [
-  { url: helveticaCockpitAsset.url, caption: "Operator-Cockpit mit Live-Kennzahlen" },
-  { url: helveticaLagezentrumAsset.url, caption: "Lagezentrum – Netzwerkgraph & Ereignisfeed" },
-  { url: helveticaCopilotAsset.url, caption: "Orakel KI-Copilot mit Quellenbelegen" },
+  { url: resolveLovableAssetUrl(helveticaCockpitAsset.url), caption: "Operator-Cockpit mit Live-Kennzahlen" },
+  { url: resolveLovableAssetUrl(helveticaLagezentrumAsset.url), caption: "Lagezentrum – Netzwerkgraph & Ereignisfeed" },
+  { url: resolveLovableAssetUrl(helveticaCopilotAsset.url), caption: "Orakel KI-Copilot mit Quellenbelegen" },
 ];
 
 type Project = Tables<"projects">;
@@ -293,11 +298,11 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
           {/* Image - 2 cols */}
           <div className={`lg:col-span-2 ${isEven ? "" : "lg:order-1"} space-y-4`}>
             {imgSrc && (
-              <div className="relative border border-subtle overflow-hidden group-hover:border-primary/20 transition-all duration-500 group-hover:shadow-2xl">
+              <div className="relative border border-subtle overflow-hidden bg-background/70 group-hover:border-primary/20 transition-all duration-500 group-hover:shadow-2xl">
                 <img
                   src={imgSrc}
                   alt={`Screenshot von ${project.title}`}
-                  className="w-full h-auto object-cover transition-all duration-700 group-hover:scale-[1.03]"
+                  className="w-full aspect-[16/10] object-cover transition-all duration-700 group-hover:scale-[1.03]"
                   loading="lazy"
                   decoding="async"
                   onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
@@ -309,7 +314,7 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
             {project.id === "accessiwidget" && <AccessiPdfShowcase />}
             {project.id === "appanalyzer" && <AppAnalyzerShowcase />}
             {project.id === "helvetica-intelligence" && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3" aria-label="Helvetica Intelligence Screenshots">
                 {helveticaGallery.map((g, i) => (
                   <motion.figure
                     key={i}
@@ -317,7 +322,7 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-40px" }}
                     transition={{ duration: 0.5, delay: 0.1 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                    className={`relative border border-subtle overflow-hidden bg-secondary/20 group/thumb hover:border-accent-commercial/40 transition-all duration-500 hover:shadow-xl ${i === 1 ? "lg:ml-4" : ""} ${i === 2 ? "lg:mr-4" : ""}`}
+                    className={`relative border border-subtle overflow-hidden bg-background/80 group/thumb hover:border-accent-commercial/40 transition-all duration-500 hover:shadow-xl ${i === 0 ? "sm:col-span-2 lg:col-span-1" : ""} ${i === 1 ? "lg:ml-4" : ""} ${i === 2 ? "lg:mr-4" : ""}`}
                   >
                     <div className="absolute top-2 left-2 z-10 text-[9px] font-mono uppercase tracking-[0.25em] text-accent-commercial bg-background/80 backdrop-blur px-1.5 py-0.5 border border-accent-commercial/30">
                       {String(i + 1).padStart(2, "0")}
@@ -325,7 +330,7 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
                     <img
                       src={g.url}
                       alt={g.caption}
-                      className="w-full h-auto object-cover transition-transform duration-700 group-hover/thumb:scale-[1.04]"
+                      className="w-full aspect-[16/10] object-cover transition-transform duration-700 group-hover/thumb:scale-[1.04]"
                       loading="lazy"
                       decoding="async"
                       onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
