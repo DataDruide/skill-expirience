@@ -7,11 +7,10 @@ import { useNavigate } from "react-router-dom";
 
 
 const LoginPage = () => {
-  const { signIn, signUp } = useAuth();
+  const { signIn } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isSignUp, setIsSignUp] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -20,13 +19,8 @@ const LoginPage = () => {
     setError("");
     setLoading(true);
     try {
-      if (isSignUp) {
-        await signUp(email, password);
-        setError("Registrierung erfolgreich! Bitte bestätige deine E-Mail.");
-      } else {
-        await signIn(email, password);
-        navigate("/admin");
-      }
+      await signIn(email, password);
+      navigate("/admin");
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -47,7 +41,7 @@ const LoginPage = () => {
       </Helmet>
       <div className="w-full max-w-sm p-8 border border-subtle bg-secondary/20">
         <h1 className="font-display font-black text-2xl uppercase tracking-tight mb-6 text-foreground">
-          {isSignUp ? "Registrieren" : "Admin Login"}
+          Admin Login
         </h1>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -72,22 +66,14 @@ const LoginPage = () => {
             className="bg-background border-foreground/10 text-foreground rounded-none"
           />
 
-
           {error && (
             <p className="text-xs text-destructive font-mono">{error}</p>
           )}
 
           <Button variant="hero" size="lg" type="submit" disabled={loading} className="w-full">
-            {loading ? "..." : isSignUp ? "Registrieren" : "Einloggen"}
+            {loading ? "..." : "Einloggen"}
           </Button>
         </form>
-
-        <button
-          onClick={() => setIsSignUp(!isSignUp)}
-          className="mt-4 text-xs text-muted-foreground font-mono hover:text-foreground transition-colors"
-        >
-          {isSignUp ? "Bereits registriert? Login" : "Noch kein Konto? Registrieren"}
-        </button>
       </div>
     </div>
   );
