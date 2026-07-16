@@ -91,23 +91,43 @@ const HeroSection = () => {
 
             <h1 className="font-display font-black uppercase tracking-tighter leading-[0.85] mb-10"
                 style={{ fontSize: "clamp(3.25rem, 9vw, 8rem)" }}>
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1, duration: 0.5 }}
-                className="block"
-              >
+              <RevealText as="span" className="block" delay={0.05}>
                 FULLSTACK
-              </motion.span>
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.25, duration: 0.5 }}
-                className="block text-accent-commercial"
-              >
+              </RevealText>
+              <RevealText as="span" className="block text-accent-commercial" delay={0.25}>
                 DEVELOPER
-              </motion.span>
+              </RevealText>
             </h1>
+
+            <div className="space-y-5 mb-9 max-w-xl">
+              <h2 className="font-display font-bold text-xl md:text-2xl text-foreground">
+                <RevealText delay={0.4}>Mobile · Web · Von der Idee bis Production</RevealText>
+              </h2>
+              <p className="text-base leading-relaxed text-muted-foreground max-w-lg">
+                Fullstack Developer mit Erfahrung in React, Flutter, Swift & Node.js.
+                Ich entwickle plattformübergreifende Apps und Web-Lösungen – von
+                BLE-Integration und CarPlay bis hin zu kompletten SaaS-Plattformen.
+                Ehemaliger Flutter-Dozent mit Leidenschaft für sauberen Code und echten Impact.
+              </p>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.4 }}
+              className="flex flex-wrap gap-3"
+            >
+              <Magnetic strength={0.3}>
+                <Button variant="hero" size="lg" onClick={() => scrollTo("projekte")}>
+                  Projekte erkunden
+                </Button>
+              </Magnetic>
+              <Magnetic strength={0.3}>
+                <Button variant="heroOutline" size="lg" onClick={() => scrollTo("kontakt")}>
+                  Anfrage senden
+                </Button>
+              </Magnetic>
+            </motion.div>
 
             <div className="space-y-5 mb-9 max-w-xl">
               <h2 className="font-display font-bold text-xl md:text-2xl text-foreground">
