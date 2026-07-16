@@ -383,7 +383,7 @@ const ProjectsSection = () => {
           <div>
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-4">03 / Projekte</p>
             <h2 id="projekte-heading" className="font-display font-black text-4xl md:text-5xl uppercase tracking-tight">
-              Fertige B2B & SaaS Lösungen
+              <RevealText>Fertige B2B & SaaS Lösungen</RevealText>
             </h2>
           </div>
           <p className="text-sm text-muted-foreground max-w-sm">
