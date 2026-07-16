@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.png";
+import Magnetic from "@/components/ui/magnetic";
+import RevealText from "@/components/ui/reveal-text";
 
 const CountUp = ({ target, suffix = "" }: { target: number; suffix?: string }) => {
   const [count, setCount] = useState(0);
@@ -89,27 +91,17 @@ const HeroSection = () => {
 
             <h1 className="font-display font-black uppercase tracking-tighter leading-[0.85] mb-10"
                 style={{ fontSize: "clamp(3.25rem, 9vw, 8rem)" }}>
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1, duration: 0.5 }}
-                className="block"
-              >
+              <RevealText as="span" className="block" delay={0.05}>
                 FULLSTACK
-              </motion.span>
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.25, duration: 0.5 }}
-                className="block text-accent-commercial"
-              >
+              </RevealText>
+              <RevealText as="span" className="block text-accent-commercial" delay={0.25}>
                 DEVELOPER
-              </motion.span>
+              </RevealText>
             </h1>
 
             <div className="space-y-5 mb-9 max-w-xl">
               <h2 className="font-display font-bold text-xl md:text-2xl text-foreground">
-                Mobile · Web · Von der Idee bis Production
+                <RevealText delay={0.4}>Mobile · Web · Von der Idee bis Production</RevealText>
               </h2>
               <p className="text-base leading-relaxed text-muted-foreground max-w-lg">
                 Fullstack Developer mit Erfahrung in React, Flutter, Swift & Node.js.
@@ -125,12 +117,16 @@ const HeroSection = () => {
               transition={{ delay: 0.5, duration: 0.4 }}
               className="flex flex-wrap gap-3"
             >
-              <Button variant="hero" size="lg" onClick={() => scrollTo("projekte")}>
-                Projekte erkunden
-              </Button>
-              <Button variant="heroOutline" size="lg" onClick={() => scrollTo("kontakt")}>
-                Anfrage senden
-              </Button>
+              <Magnetic strength={0.3}>
+                <Button variant="hero" size="lg" onClick={() => scrollTo("projekte")}>
+                  Projekte erkunden
+                </Button>
+              </Magnetic>
+              <Magnetic strength={0.3}>
+                <Button variant="heroOutline" size="lg" onClick={() => scrollTo("kontakt")}>
+                  Anfrage senden
+                </Button>
+              </Magnetic>
             </motion.div>
           </motion.div>
 

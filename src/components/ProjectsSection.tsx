@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import PhoneCarousel from "@/components/PhoneCarousel";
 import AccessiPdfShowcase from "@/components/AccessiPdfShowcase";
 import AppAnalyzerShowcase from "@/components/AppAnalyzerShowcase";
+import TiltCard from "@/components/ui/tilt-card";
+import RevealText from "@/components/ui/reveal-text";
 
 import spaetimobilImg from "@/assets/spaetimobil-screenshot.png";
 import pflegefondImg from "@/assets/pflegefond-screenshot.png";
@@ -240,7 +242,7 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
                 {isYellow ? "Commercial" : "Social Impact"} / B2B
               </span>
               <h3 className="font-display font-black text-2xl md:text-3xl uppercase tracking-tight mt-1">
-                {project.title}
+                <RevealText>{project.title || ""}</RevealText>
               </h3>
               <p className={`${accentText} text-sm font-mono mt-1`}>{project.subtitle}</p>
             </div>
@@ -298,17 +300,19 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
           {/* Image - 2 cols */}
           <div className={`lg:col-span-2 ${isEven ? "" : "lg:order-1"} space-y-4`}>
             {imgSrc && (
-              <div className="relative border border-subtle overflow-hidden bg-background/70 group-hover:border-primary/20 transition-all duration-500 group-hover:shadow-2xl">
-                <img
-                  src={imgSrc}
-                  alt={`Screenshot von ${project.title}`}
-                  className="w-full aspect-[16/10] object-contain bg-secondary/30 transition-all duration-700 group-hover:scale-[1.02]"
-                  loading="lazy"
-                  decoding="async"
-                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
-                />
-                <div className={`pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${isYellow ? "bg-gradient-to-tr from-accent-commercial/10 via-transparent to-transparent" : "bg-gradient-to-tr from-accent-impact/10 via-transparent to-transparent"}`} />
-              </div>
+              <TiltCard className="relative">
+                <div className="relative border border-subtle overflow-hidden bg-background/70 group-hover:border-primary/20 transition-all duration-500 group-hover:shadow-2xl">
+                  <img
+                    src={imgSrc}
+                    alt={`Screenshot von ${project.title}`}
+                    className="w-full aspect-[16/10] object-contain bg-secondary/30 transition-all duration-700 group-hover:scale-[1.02]"
+                    loading="lazy"
+                    decoding="async"
+                    onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                  />
+                  <div className={`pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${isYellow ? "bg-gradient-to-tr from-accent-commercial/10 via-transparent to-transparent" : "bg-gradient-to-tr from-accent-impact/10 via-transparent to-transparent"}`} />
+                </div>
+              </TiltCard>
             )}
             {project.id === "spaetimobil" && <PhoneCarousel />}
             {project.id === "accessiwidget" && <AccessiPdfShowcase />}
@@ -379,7 +383,7 @@ const ProjectsSection = () => {
           <div>
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-4">03 / Projekte</p>
             <h2 id="projekte-heading" className="font-display font-black text-4xl md:text-5xl uppercase tracking-tight">
-              Fertige B2B & SaaS Lösungen
+              <RevealText>Fertige B2B & SaaS Lösungen</RevealText>
             </h2>
           </div>
           <p className="text-sm text-muted-foreground max-w-sm">
