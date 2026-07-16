@@ -242,7 +242,7 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
                 {isYellow ? "Commercial" : "Social Impact"} / B2B
               </span>
               <h3 className="font-display font-black text-2xl md:text-3xl uppercase tracking-tight mt-1">
-                {project.title}
+                <RevealText>{project.title || ""}</RevealText>
               </h3>
               <p className={`${accentText} text-sm font-mono mt-1`}>{project.subtitle}</p>
             </div>
