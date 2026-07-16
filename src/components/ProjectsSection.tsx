@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import PhoneCarousel from "@/components/PhoneCarousel";
 import AccessiPdfShowcase from "@/components/AccessiPdfShowcase";
 import AppAnalyzerShowcase from "@/components/AppAnalyzerShowcase";
+import TiltCard from "@/components/ui/tilt-card";
+import RevealText from "@/components/ui/reveal-text";
 
 import spaetimobilImg from "@/assets/spaetimobil-screenshot.png";
 import pflegefondImg from "@/assets/pflegefond-screenshot.png";
