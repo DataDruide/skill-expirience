@@ -128,32 +128,6 @@ const HeroSection = () => {
                 </Button>
               </Magnetic>
             </motion.div>
-
-            <div className="space-y-5 mb-9 max-w-xl">
-              <h2 className="font-display font-bold text-xl md:text-2xl text-foreground">
-                Mobile · Web · Von der Idee bis Production
-              </h2>
-              <p className="text-base leading-relaxed text-muted-foreground max-w-lg">
-                Fullstack Developer mit Erfahrung in React, Flutter, Swift & Node.js.
-                Ich entwickle plattformübergreifende Apps und Web-Lösungen – von
-                BLE-Integration und CarPlay bis hin zu kompletten SaaS-Plattformen.
-                Ehemaliger Flutter-Dozent mit Leidenschaft für sauberen Code und echten Impact.
-              </p>
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.4 }}
-              className="flex flex-wrap gap-3"
-            >
-              <Button variant="hero" size="lg" onClick={() => scrollTo("projekte")}>
-                Projekte erkunden
-              </Button>
-              <Button variant="heroOutline" size="lg" onClick={() => scrollTo("kontakt")}>
-                Anfrage senden
-              </Button>
-            </motion.div>
           </motion.div>
 
           {/* Right: Portrait (5 cols) */}
