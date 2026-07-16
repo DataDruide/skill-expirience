@@ -300,17 +300,19 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
           {/* Image - 2 cols */}
           <div className={`lg:col-span-2 ${isEven ? "" : "lg:order-1"} space-y-4`}>
             {imgSrc && (
-              <div className="relative border border-subtle overflow-hidden bg-background/70 group-hover:border-primary/20 transition-all duration-500 group-hover:shadow-2xl">
-                <img
-                  src={imgSrc}
-                  alt={`Screenshot von ${project.title}`}
-                  className="w-full aspect-[16/10] object-contain bg-secondary/30 transition-all duration-700 group-hover:scale-[1.02]"
-                  loading="lazy"
-                  decoding="async"
-                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
-                />
-                <div className={`pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${isYellow ? "bg-gradient-to-tr from-accent-commercial/10 via-transparent to-transparent" : "bg-gradient-to-tr from-accent-impact/10 via-transparent to-transparent"}`} />
-              </div>
+              <TiltCard className="relative">
+                <div className="relative border border-subtle overflow-hidden bg-background/70 group-hover:border-primary/20 transition-all duration-500 group-hover:shadow-2xl">
+                  <img
+                    src={imgSrc}
+                    alt={`Screenshot von ${project.title}`}
+                    className="w-full aspect-[16/10] object-contain bg-secondary/30 transition-all duration-700 group-hover:scale-[1.02]"
+                    loading="lazy"
+                    decoding="async"
+                    onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                  />
+                  <div className={`pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${isYellow ? "bg-gradient-to-tr from-accent-commercial/10 via-transparent to-transparent" : "bg-gradient-to-tr from-accent-impact/10 via-transparent to-transparent"}`} />
+                </div>
+              </TiltCard>
             )}
             {project.id === "spaetimobil" && <PhoneCarousel />}
             {project.id === "accessiwidget" && <AccessiPdfShowcase />}
