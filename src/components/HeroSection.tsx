@@ -160,64 +160,87 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="order-1 lg:order-2 lg:col-span-5 flex justify-center lg:justify-center"
           >
-            <motion.div style={{ y: portraitY, scale: portraitScale }} className="relative group w-4/5 max-w-sm">
-              {/* Ambient glow */}
-              <div
-                className="absolute -inset-8 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 blur-3xl opacity-40 group-hover:opacity-70 transition-opacity duration-700"
-                aria-hidden="true"
-              />
-
-              {/* Portrait frame */}
-              <div className="relative aspect-[4/5] w-full border border-subtle bg-secondary overflow-hidden group-hover:border-primary/30 transition-colors duration-500">
-                <img
-                  src={profilePhoto}
-                  alt="Marcel Zimmermann – Fullstack Developer"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-[1.03]"
-                  width={600}
-                  height={750}
-                />
+            <motion.div style={{ y: portraitY, scale: portraitScale }} className="w-full max-w-sm">
+              <div className="relative group w-full">
+                {/* Ambient glow */}
                 <div
-                  className="absolute inset-0 bg-accent-commercial/5 mix-blend-overlay pointer-events-none"
+                  className="absolute -inset-8 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 blur-3xl opacity-40 group-hover:opacity-70 transition-opacity duration-700"
                   aria-hidden="true"
                 />
+
+                {/* Portrait frame */}
+                <div className="relative aspect-[4/5] w-full border border-subtle bg-secondary overflow-hidden group-hover:border-primary/30 transition-colors duration-500">
+                  <img
+                    src={profilePhoto}
+                    alt="Marcel Zimmermann – Fullstack Developer"
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-[1.03]"
+                    width={600}
+                    height={750}
+                  />
+                  <div
+                    className="absolute inset-0 bg-accent-commercial/5 mix-blend-overlay pointer-events-none"
+                    aria-hidden="true"
+                  />
+                </div>
+
+                {/* Decorative L-shape */}
+                <div
+                  className="hidden sm:block absolute -bottom-6 -right-6 w-24 h-24 md:w-32 md:h-32 border-b-2 border-r-2 border-accent-commercial/30 pointer-events-none"
+                  aria-hidden="true"
+                />
+
+                {/* Floating stat: Projekte (ab sm, damit auf Mobile nichts verdeckt wird) */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.8, duration: 0.5 }}
+                  className="hidden sm:block absolute -right-6 lg:-right-10 top-8 bg-background border-2 border-subtle px-5 py-4 min-w-[140px] shadow-[10px_10px_0_0_hsl(var(--foreground)/0.08)] group-hover:shadow-[14px_14px_0_0_hsl(var(--foreground)/0.12)] group-hover:-translate-y-1 transition-all duration-500"
+                >
+                  <p className="text-4xl font-display font-black text-accent-commercial leading-none">
+                    <CountUp target={12} suffix="+" />
+                  </p>
+                  <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mt-1">
+                    Projekte
+                  </p>
+                </motion.div>
+
+                {/* Floating stat: Jahre */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1, duration: 0.5 }}
+                  className="hidden sm:block absolute -left-6 lg:-left-10 bottom-16 sm:bottom-20 bg-background border-2 border-subtle px-5 py-4 min-w-[140px] shadow-[10px_10px_0_0_hsl(var(--foreground)/0.08)] group-hover:shadow-[14px_14px_0_0_hsl(var(--foreground)/0.12)] group-hover:translate-y-1 transition-all duration-500"
+                >
+                  <p className="text-4xl font-display font-black text-accent-impact leading-none">
+                    <CountUp target={3} suffix="+" />
+                  </p>
+                  <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mt-1">
+                    Jahre Dev
+                  </p>
+                </motion.div>
               </div>
 
-              {/* Decorative L-shape */}
-              <div
-                className="absolute -bottom-6 -right-6 w-24 h-24 md:w-32 md:h-32 border-b-2 border-r-2 border-accent-commercial/30 pointer-events-none"
-                aria-hidden="true"
-              />
-
-              {/* Floating stat: Projekte */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.8, duration: 0.5 }}
-                className="absolute -right-3 sm:-right-6 top-8 bg-background border-2 border-subtle px-4 py-3 sm:px-5 sm:py-4 min-w-[120px] sm:min-w-[140px] shadow-[10px_10px_0_0_hsl(var(--foreground)/0.08)] group-hover:shadow-[14px_14px_0_0_hsl(var(--foreground)/0.12)] group-hover:-translate-y-1 transition-all duration-500"
-              >
-                <p className="text-3xl sm:text-4xl font-display font-black text-accent-commercial leading-none">
-                  <CountUp target={12} suffix="+" />
-                </p>
-                <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mt-1">
-                  Projekte
-                </p>
-              </motion.div>
-
-              {/* Floating stat: Jahre */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1, duration: 0.5 }}
-                className="absolute -left-3 sm:-left-8 bottom-16 sm:bottom-20 bg-background border-2 border-subtle px-4 py-3 sm:px-5 sm:py-4 min-w-[120px] sm:min-w-[140px] shadow-[10px_10px_0_0_hsl(var(--foreground)/0.08)] group-hover:shadow-[14px_14px_0_0_hsl(var(--foreground)/0.12)] group-hover:translate-y-1 transition-all duration-500"
-              >
-                <p className="text-3xl sm:text-4xl font-display font-black text-accent-impact leading-none">
-                  <CountUp target={3} suffix="+" />
-                </p>
-                <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mt-1">
-                  Jahre Dev
-                </p>
-              </motion.div>
+              {/* Mobile-Stats: unterhalb des Portraits statt darüber */}
+              <div className="grid grid-cols-2 gap-3 mt-5 sm:hidden">
+                <div className="border border-subtle bg-background px-4 py-3">
+                  <p className="text-3xl font-display font-black text-accent-commercial leading-none">
+                    <CountUp target={12} suffix="+" />
+                  </p>
+                  <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mt-1">
+                    Projekte
+                  </p>
+                </div>
+                <div className="border border-subtle bg-background px-4 py-3">
+                  <p className="text-3xl font-display font-black text-accent-impact leading-none">
+                    <CountUp target={3} suffix="+" />
+                  </p>
+                  <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mt-1">
+                    Jahre Dev
+                  </p>
+                </div>
+              </div>
             </motion.div>
+
 
           </motion.div>
         </div>
