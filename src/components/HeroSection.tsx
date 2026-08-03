@@ -27,6 +27,22 @@ const CountUp = ({ target, suffix = "" }: { target: number; suffix?: string }) =
 
 const HeroSection = () => {
   const [time, setTime] = useState(new Date());
+  const sectionRef = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const smooth = useSpring(scrollYProgress, { stiffness: 90, damping: 24, mass: 0.4 });
+
+  const portraitY = useTransform(smooth, [0, 1], [0, reduce ? 0 : -70]);
+  const portraitScale = useTransform(smooth, [0, 1], [1, reduce ? 1 : 1.05]);
+  const copyY = useTransform(smooth, [0, 1], [0, reduce ? 0 : 50]);
+  const copyOpacity = useTransform(smooth, [0, 0.85], [1, reduce ? 1 : 0.25]);
+  const orbAY = useTransform(smooth, [0, 1], [0, reduce ? 0 : 160]);
+  const orbBY = useTransform(smooth, [0, 1], [0, reduce ? 0 : -140]);
+  const gridY = useTransform(smooth, [0, 1], [0, reduce ? 0 : 90]);
 
   useEffect(() => {
     const interval = setInterval(() => setTime(new Date()), 1000);
@@ -39,9 +55,11 @@ const HeroSection = () => {
 
   return (
     <section
+      ref={sectionRef}
       className="min-h-screen flex flex-col justify-center pt-14 pb-10 md:pt-16 md:pb-12 relative overflow-hidden"
       aria-label="Hero"
     >
+
       {/* Architectural grid background */}
       <div
         className="absolute inset-0 opacity-[0.04] pointer-events-none"
