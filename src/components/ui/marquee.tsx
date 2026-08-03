@@ -18,7 +18,7 @@ const Marquee = ({ items, speed = 40, reverse = false, className, separator }: M
 
   const renderItems = (ariaHidden: boolean) =>
     items.map((item, i) => (
-      <span key={`${item}-${i}`} className="flex items-center gap-6 shrink-0" aria-hidden={ariaHidden || undefined}>
+      <span key={`${item}-${i}`} className="flex items-center gap-6 pl-6 shrink-0" aria-hidden={ariaHidden || undefined}>
         <span className="font-mono text-sm uppercase tracking-[0.2em] text-muted-foreground whitespace-nowrap">
           {item}
         </span>
@@ -31,7 +31,7 @@ const Marquee = ({ items, speed = 40, reverse = false, className, separator }: M
   if (reduce) {
     return (
       <div className={`overflow-x-auto ${className ?? ""}`}>
-        <div className="flex items-center gap-6 py-4 px-1">{renderItems(false)}</div>
+        <div className="flex items-center py-4 px-1">{renderItems(false)}</div>
       </div>
     );
   }
@@ -45,7 +45,7 @@ const Marquee = ({ items, speed = 40, reverse = false, className, separator }: M
       }}
     >
       <div
-        className="flex w-max items-center gap-6 py-4 will-change-transform group-hover:[animation-play-state:paused]"
+        className="flex w-max items-center py-4 will-change-transform group-hover:[animation-play-state:paused]"
         style={{
           animation: `marquee-scroll ${speed}s linear infinite`,
           animationDirection: reverse ? "reverse" : "normal",
