@@ -104,7 +104,7 @@ const SkillsSection = () => {
                     <span className="text-sm text-foreground font-medium group-hover/skill:translate-x-1 transition-transform duration-300 min-w-0">
                       {skill.name}
                     </span>
-                    <span className="text-xs font-mono text-muted-foreground group-hover/skill:text-foreground transition-colors duration-300 sm:text-right min-w-0 break-words">
+                    <span className="text-xs font-mono text-muted-foreground group-hover/skill:text-foreground transition-colors duration-300 basis-full lg:basis-auto lg:text-right min-w-0 break-words">
                       {skill.detail}
                     </span>
 
