@@ -217,7 +217,8 @@ const HeroSection = () => {
                   Jahre Dev
                 </p>
               </motion.div>
-            </div>
+            </motion.div>
+
           </motion.div>
         </div>
 
