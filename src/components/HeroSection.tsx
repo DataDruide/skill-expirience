@@ -61,28 +61,32 @@ const HeroSection = () => {
     >
 
       {/* Architectural grid background */}
-      <div
+      <motion.div
         className="absolute inset-0 opacity-[0.04] pointer-events-none"
         style={{
           backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
           backgroundSize: "80px 80px",
+          y: gridY,
         }}
         aria-hidden="true"
       />
 
       {/* Ambient orbs */}
-      <motion.div
-        animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
-        transition={{ repeat: Infinity, duration: 14, ease: "easeInOut" }}
-        className="absolute top-1/4 -left-32 w-[28rem] h-[28rem] bg-primary/10 rounded-full blur-[140px] pointer-events-none"
-        aria-hidden="true"
-      />
-      <motion.div
-        animate={{ x: [0, -20, 0], y: [0, 30, 0] }}
-        transition={{ repeat: Infinity, duration: 16, ease: "easeInOut" }}
-        className="absolute bottom-1/4 -right-32 w-[28rem] h-[28rem] bg-accent/10 rounded-full blur-[140px] pointer-events-none"
-        aria-hidden="true"
-      />
+      <motion.div style={{ y: orbAY }} className="absolute top-1/4 -left-32 pointer-events-none" aria-hidden="true">
+        <motion.div
+          animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
+          transition={{ repeat: Infinity, duration: 14, ease: "easeInOut" }}
+          className="w-[28rem] h-[28rem] bg-primary/10 rounded-full blur-[140px]"
+        />
+      </motion.div>
+      <motion.div style={{ y: orbBY }} className="absolute bottom-1/4 -right-32 pointer-events-none" aria-hidden="true">
+        <motion.div
+          animate={{ x: [0, -20, 0], y: [0, 30, 0] }}
+          transition={{ repeat: Infinity, duration: 16, ease: "easeInOut" }}
+          className="w-[28rem] h-[28rem] bg-accent/10 rounded-full blur-[140px]"
+        />
+      </motion.div>
+
 
       <div className="container-strict w-full relative z-10">
         <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-0 items-center">
