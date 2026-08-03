@@ -7,6 +7,15 @@ import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import CompanySection from "@/components/CompanySection";
 import ContactSection from "@/components/ContactSection";
+import SectionProgress from "@/components/ui/section-progress";
+
+const sections = [
+  { id: "ueber", label: "Über" },
+  { id: "projekte", label: "Projekte" },
+  { id: "skills", label: "Skills" },
+  { id: "firma", label: "Firma" },
+  { id: "kontakt", label: "Kontakt" },
+];
 
 const Index = () => {
   return (
@@ -21,6 +30,7 @@ const Index = () => {
         <meta property="og:type" content="website" />
       </Helmet>
       <Navbar />
+      <SectionProgress sections={sections} />
       <HeroSection />
       <AboutSection />
       <LiveDashboard />
