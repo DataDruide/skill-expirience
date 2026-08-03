@@ -160,7 +160,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="order-1 lg:order-2 lg:col-span-5 flex justify-center lg:justify-center"
           >
-            <div className="relative group w-4/5 max-w-sm">
+            <motion.div style={{ y: portraitY, scale: portraitScale }} className="relative group w-4/5 max-w-sm">
               {/* Ambient glow */}
               <div
                 className="absolute -inset-8 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 blur-3xl opacity-40 group-hover:opacity-70 transition-opacity duration-700"
