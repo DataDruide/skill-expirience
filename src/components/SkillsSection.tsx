@@ -1,4 +1,16 @@
 import { motion } from "framer-motion";
+import Marquee from "@/components/ui/marquee";
+
+const tickerTop = [
+  "React", "TypeScript", "Flutter", "SwiftUI", "Next.js", "Tailwind CSS",
+  "Framer Motion", "Vite", "React Native",
+];
+
+const tickerBottom = [
+  "Node.js", "NestJS", "PostgreSQL", "Supabase", "MongoDB", "GraphQL",
+  "REST APIs", "CI/CD", "Bluetooth LE", "Docker",
+];
+
 
 const skillCategories = [
   {
