@@ -1,10 +1,11 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { ChevronDown } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.png";
 import Magnetic from "@/components/ui/magnetic";
 import RevealText from "@/components/ui/reveal-text";
+
 
 const CountUp = ({ target, suffix = "" }: { target: number; suffix?: string }) => {
   const [count, setCount] = useState(0);
