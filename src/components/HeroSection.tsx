@@ -1,10 +1,11 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { ChevronDown } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.png";
 import Magnetic from "@/components/ui/magnetic";
 import RevealText from "@/components/ui/reveal-text";
+
 
 const CountUp = ({ target, suffix = "" }: { target: number; suffix?: string }) => {
   const [count, setCount] = useState(0);
@@ -26,6 +27,22 @@ const CountUp = ({ target, suffix = "" }: { target: number; suffix?: string }) =
 
 const HeroSection = () => {
   const [time, setTime] = useState(new Date());
+  const sectionRef = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const smooth = useSpring(scrollYProgress, { stiffness: 90, damping: 24, mass: 0.4 });
+
+  const portraitY = useTransform(smooth, [0, 1], [0, reduce ? 0 : -70]);
+  const portraitScale = useTransform(smooth, [0, 1], [1, reduce ? 1 : 1.05]);
+  const copyY = useTransform(smooth, [0, 1], [0, reduce ? 0 : 50]);
+  const copyOpacity = useTransform(smooth, [0, 0.85], [1, reduce ? 1 : 0.25]);
+  const orbAY = useTransform(smooth, [0, 1], [0, reduce ? 0 : 160]);
+  const orbBY = useTransform(smooth, [0, 1], [0, reduce ? 0 : -140]);
+  const gridY = useTransform(smooth, [0, 1], [0, reduce ? 0 : 90]);
 
   useEffect(() => {
     const interval = setInterval(() => setTime(new Date()), 1000);
@@ -38,32 +55,38 @@ const HeroSection = () => {
 
   return (
     <section
+      ref={sectionRef}
       className="min-h-screen flex flex-col justify-center pt-14 pb-10 md:pt-16 md:pb-12 relative overflow-hidden"
       aria-label="Hero"
     >
+
       {/* Architectural grid background */}
-      <div
+      <motion.div
         className="absolute inset-0 opacity-[0.04] pointer-events-none"
         style={{
           backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
           backgroundSize: "80px 80px",
+          y: gridY,
         }}
         aria-hidden="true"
       />
 
       {/* Ambient orbs */}
-      <motion.div
-        animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
-        transition={{ repeat: Infinity, duration: 14, ease: "easeInOut" }}
-        className="absolute top-1/4 -left-32 w-[28rem] h-[28rem] bg-primary/10 rounded-full blur-[140px] pointer-events-none"
-        aria-hidden="true"
-      />
-      <motion.div
-        animate={{ x: [0, -20, 0], y: [0, 30, 0] }}
-        transition={{ repeat: Infinity, duration: 16, ease: "easeInOut" }}
-        className="absolute bottom-1/4 -right-32 w-[28rem] h-[28rem] bg-accent/10 rounded-full blur-[140px] pointer-events-none"
-        aria-hidden="true"
-      />
+      <motion.div style={{ y: orbAY }} className="absolute top-1/4 -left-32 pointer-events-none" aria-hidden="true">
+        <motion.div
+          animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
+          transition={{ repeat: Infinity, duration: 14, ease: "easeInOut" }}
+          className="w-[28rem] h-[28rem] bg-primary/10 rounded-full blur-[140px]"
+        />
+      </motion.div>
+      <motion.div style={{ y: orbBY }} className="absolute bottom-1/4 -right-32 pointer-events-none" aria-hidden="true">
+        <motion.div
+          animate={{ x: [0, -20, 0], y: [0, 30, 0] }}
+          transition={{ repeat: Infinity, duration: 16, ease: "easeInOut" }}
+          className="w-[28rem] h-[28rem] bg-accent/10 rounded-full blur-[140px]"
+        />
+      </motion.div>
+
 
       <div className="container-strict w-full relative z-10">
         <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-0 items-center">
@@ -137,7 +160,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="order-1 lg:order-2 lg:col-span-5 flex justify-center lg:justify-center"
           >
-            <div className="relative group w-4/5 max-w-sm">
+            <motion.div style={{ y: portraitY, scale: portraitScale }} className="relative group w-4/5 max-w-sm">
               {/* Ambient glow */}
               <div
                 className="absolute -inset-8 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 blur-3xl opacity-40 group-hover:opacity-70 transition-opacity duration-700"
@@ -194,7 +217,8 @@ const HeroSection = () => {
                   Jahre Dev
                 </p>
               </motion.div>
-            </div>
+            </motion.div>
+
           </motion.div>
         </div>
 

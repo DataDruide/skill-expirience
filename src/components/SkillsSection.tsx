@@ -1,4 +1,16 @@
 import { motion } from "framer-motion";
+import Marquee from "@/components/ui/marquee";
+
+const tickerTop = [
+  "React", "TypeScript", "Flutter", "SwiftUI", "Next.js", "Tailwind CSS",
+  "Framer Motion", "Vite", "React Native",
+];
+
+const tickerBottom = [
+  "Node.js", "NestJS", "PostgreSQL", "Supabase", "MongoDB", "GraphQL",
+  "REST APIs", "CI/CD", "Bluetooth LE", "Docker",
+];
+
 
 const skillCategories = [
   {
@@ -102,7 +114,15 @@ const SkillsSection = () => {
           ))}
         </div>
       </div>
+
+      {/* Tech-Stack Ticker */}
+      <div className="mt-14 md:mt-20 border-y border-subtle bg-secondary/20">
+        <Marquee items={tickerTop} speed={45} />
+        <div className="h-px bg-subtle" aria-hidden="true" />
+        <Marquee items={tickerBottom} speed={55} reverse />
+      </div>
     </section>
+
   );
 };
 
