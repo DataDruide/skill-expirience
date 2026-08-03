@@ -45,7 +45,7 @@ const SectionProgress = ({ sections }: SectionProgressProps) => {
 
   return (
     <div
-      className="hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col items-end gap-5"
+      className="hidden 2xl:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col items-end gap-5"
       aria-hidden="true"
     >
       <div className="absolute right-[3px] top-0 bottom-0 w-px bg-foreground/10" />
@@ -61,7 +61,7 @@ const SectionProgress = ({ sections }: SectionProgressProps) => {
             key={s.id}
             onClick={() => scrollTo(s.id)}
             tabIndex={-1}
-            className="group relative flex items-center gap-3 pr-1"
+            className="group relative flex items-center gap-3 pr-1 pointer-events-auto"
           >
             <span
               className={`font-mono text-[10px] uppercase tracking-[0.25em] transition-all duration-300 ${

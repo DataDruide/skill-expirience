@@ -99,14 +99,15 @@ const SkillsSection = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: i * 0.1 + si * 0.05 }}
-                    className="group/skill flex items-baseline justify-between py-3 border-b border-subtle hover:border-foreground/20 transition-all duration-300 cursor-default gap-4"
+                    className="group/skill flex flex-wrap items-baseline justify-between py-3 border-b border-subtle hover:border-foreground/20 transition-all duration-300 cursor-default gap-x-4 gap-y-1"
                   >
-                    <span className="text-sm text-foreground font-medium group-hover/skill:translate-x-1 transition-transform duration-300">
+                    <span className="text-sm text-foreground font-medium group-hover/skill:translate-x-1 transition-transform duration-300 min-w-0">
                       {skill.name}
                     </span>
-                    <span className="text-xs font-mono text-muted-foreground group-hover/skill:text-foreground transition-colors duration-300 text-right shrink-0">
+                    <span className="text-xs font-mono text-muted-foreground group-hover/skill:text-foreground transition-colors duration-300 basis-full lg:basis-auto lg:text-right min-w-0 break-words">
                       {skill.detail}
                     </span>
+
                   </motion.div>
                 ))}
               </div>
