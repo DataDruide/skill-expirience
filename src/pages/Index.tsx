@@ -8,6 +8,9 @@ import SkillsSection from "@/components/SkillsSection";
 import CompanySection from "@/components/CompanySection";
 import ContactSection from "@/components/ContactSection";
 import SectionProgress from "@/components/ui/section-progress";
+import ScrollProgress from "@/components/ui/scroll-progress";
+import BackToTop from "@/components/ui/back-to-top";
+import SpotlightCursor from "@/components/ui/spotlight-cursor";
 
 const sections = [
   { id: "ueber", label: "Über" },
@@ -19,7 +22,7 @@ const sections = [
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground relative grain">
       <Helmet>
         <title>Marcel Zimmermann – Fullstack Developer Portfolio</title>
         <meta name="description" content="Fullstack Developer Portfolio von Marcel Zimmermann: React, Flutter, Swift & Node.js – B2B, SaaS und Social Impact Projekte." />
@@ -29,6 +32,8 @@ const Index = () => {
         <meta property="og:url" content="https://code-craft-impact.lovable.app/" />
         <meta property="og:type" content="website" />
       </Helmet>
+      <ScrollProgress />
+      <SpotlightCursor />
       <Navbar />
       <SectionProgress sections={sections} />
       <HeroSection />
@@ -38,6 +43,7 @@ const Index = () => {
       <SkillsSection />
       <CompanySection />
       <ContactSection />
+      <BackToTop />
     </div>
   );
 };
