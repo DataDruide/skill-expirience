@@ -125,6 +125,11 @@
     background: hsl(var(--muted-foreground) / 0.4);
   }
 
+  /* Globale Fokus-Sichtbarkeit für Tastatur-Navigation */
+  :where(a, button, input, textarea, select, summary, [tabindex]:not([tabindex="-1"])):focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
   /* Selection highlight */
   ::selection {
     background: hsl(var(--primary) / 0.3);
@@ -225,4 +230,24 @@
 
 @media (prefers-reduced-motion: reduce) {
   [style*="marquee-scroll"] { animation: none !important; }
+}
+
+@layer components {
+  .skip-link {
+    @apply sr-only;
+  }
+  .skip-link:focus {
+    @apply not-sr-only fixed left-4 top-4 z-[100] bg-background text-foreground border-2 border-primary px-4 py-2 text-sm font-mono uppercase tracking-widest;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

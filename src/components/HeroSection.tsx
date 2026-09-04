@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { ChevronDown } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.png";
 import Magnetic from "@/components/ui/magnetic";
+import LottieMicro from "@/components/ui/lottie-micro";
 import RevealText from "@/components/ui/reveal-text";
 
 
@@ -141,9 +142,12 @@ const HeroSection = () => {
               className="flex flex-wrap gap-3"
             >
               <Magnetic strength={0.3}>
+                <span className="relative inline-flex">
+                  <LottieMicro variant="scan" className="pointer-events-none absolute inset-x-0 -bottom-1 h-3 block opacity-70" />
                 <Button variant="hero" size="lg" onClick={() => scrollTo("projekte")}>
                   Projekte erkunden
                 </Button>
+                </span>
               </Magnetic>
               <Magnetic strength={0.3}>
                 <Button variant="heroOutline" size="lg" onClick={() => scrollTo("kontakt")}>

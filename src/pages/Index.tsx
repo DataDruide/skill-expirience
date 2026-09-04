@@ -34,15 +34,18 @@ const Index = () => {
       </Helmet>
       <ScrollProgress />
       <SpotlightCursor />
+      <a href="#hauptinhalt" className="skip-link">Zum Inhalt springen</a>
       <Navbar />
       <SectionProgress sections={sections} />
-      <HeroSection />
-      <AboutSection />
-      <LiveDashboard />
-      <ProjectsSection />
-      <SkillsSection />
-      <CompanySection />
-      <ContactSection />
+      <main id="hauptinhalt">
+        <HeroSection />
+        <AboutSection />
+        <LiveDashboard />
+        <ProjectsSection />
+        <SkillsSection />
+        <CompanySection />
+        <ContactSection />
+      </main>
       <BackToTop />
     </div>
   );
