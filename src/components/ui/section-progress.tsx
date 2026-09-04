@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import LottieMicro from "@/components/ui/lottie-micro";
 import { motion, useScroll, useSpring, useReducedMotion } from "framer-motion";
 
 interface Section {
@@ -72,6 +73,9 @@ const SectionProgress = ({ sections }: SectionProgressProps) => {
             >
               {s.label}
             </span>
+            {isActive && (
+              <LottieMicro variant="pulse" className="absolute -right-2 h-5 w-5 block pointer-events-none" />
+            )}
             <span
               className={`block rounded-full transition-all duration-300 ${
                 isActive
