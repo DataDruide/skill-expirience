@@ -1,6 +1,7 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, Monitor } from "lucide-react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const navLinks = [
   { label: "Über mich", href: "#ueber", id: "ueber" },
@@ -12,26 +13,17 @@ const navLinks = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [dark, setDark] = useState(true);
   const [activeSection, setActiveSection] = useState("");
+  const { mode, resolved, cycleMode } = useTheme();
 
-  useEffect(() => {
-    const saved = localStorage.getItem("theme");
-    const isDark = saved ? saved === "dark" : true;
-    setDark(isDark);
-    document.documentElement.classList.toggle("dark", isDark);
-    document.documentElement.classList.toggle("light", !isDark);
-  }, []);
+  const themeLabel =
+    mode === "system"
+      ? `Theme: System (${resolved === "dark" ? "dunkel" : "hell"}) – klicken für hell`
+      : mode === "light"
+        ? "Theme: Hell – klicken für dunkel"
+        : "Theme: Dunkel – klicken für System";
 
-  const toggleTheme = useCallback(() => {
-    setDark(prev => {
-      const next = !prev;
-      localStorage.setItem("theme", next ? "dark" : "light");
-      document.documentElement.classList.toggle("dark", next);
-      document.documentElement.classList.toggle("light", !next);
-      return next;
-    });
-  }, []);
+  const ThemeIcon = mode === "system" ? Monitor : mode === "dark" ? Moon : Sun;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -98,7 +90,8 @@ const Navbar = () => {
             <button
               key={link.href}
               onClick={() => scrollTo(link.href)}
-              className={`relative px-4 py-2 text-xs font-mono uppercase tracking-widest transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm ${
+              aria-current={activeSection === link.id ? "true" : undefined}
+              className={`relative px-4 py-2 text-xs font-mono uppercase tracking-widest transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm ${
                 activeSection === link.id
                   ? "text-foreground"
                   : "text-muted-foreground hover:text-foreground"
@@ -115,35 +108,37 @@ const Navbar = () => {
             </button>
           ))}
           <button
-            onClick={toggleTheme}
-            className="ml-3 p-2 text-muted-foreground hover:text-foreground transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm hover:bg-foreground/5"
-            aria-label={dark ? "Zum hellen Modus wechseln" : "Zum dunklen Modus wechseln"}
+            onClick={cycleMode}
+            className="ml-3 p-2 text-muted-foreground hover:text-foreground transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm hover:bg-foreground/5"
+            aria-label={themeLabel}
+            title={themeLabel}
           >
             <motion.div
-              key={dark ? "sun" : "moon"}
+              key={mode}
               initial={{ rotate: -90, opacity: 0 }}
               animate={{ rotate: 0, opacity: 1 }}
               exit={{ rotate: 90, opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-              {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              <ThemeIcon className="h-4 w-4" aria-hidden="true" />
             </motion.div>
           </button>
         </div>
 
         <div className="flex md:hidden items-center gap-1">
           <button
-            onClick={toggleTheme}
-            className="p-2 text-muted-foreground hover:text-foreground transition-colors"
-            aria-label={dark ? "Zum hellen Modus wechseln" : "Zum dunklen Modus wechseln"}
+            onClick={cycleMode}
+            className="min-h-11 min-w-11 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            aria-label={themeLabel}
           >
-            {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            <ThemeIcon className="h-4 w-4" aria-hidden="true" />
           </button>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+            className="min-h-11 min-w-11 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             aria-label={mobileOpen ? "Menü schließen" : "Menü öffnen"}
             aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -157,6 +152,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            id="mobile-menu"
             className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border overflow-hidden"
           >
             <div className="container-strict py-4 space-y-1">
@@ -167,7 +163,8 @@ const Navbar = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05, duration: 0.3 }}
                   onClick={() => scrollTo(link.href)}
-                  className={`block w-full text-left px-4 py-3 text-sm font-mono uppercase tracking-widest transition-colors rounded-sm ${
+                  aria-current={activeSection === link.id ? "true" : undefined}
+                  className={`block w-full text-left px-4 py-3 min-h-11 text-sm font-mono uppercase tracking-widest transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset ${
                     activeSection === link.id
                       ? "text-foreground bg-secondary/40 border-l-2 border-primary"
                       : "text-muted-foreground hover:text-foreground hover:bg-secondary/40"
