@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { useInView } from "framer-motion";
 import Marquee from "@/components/ui/marquee";
+import { ListSkeleton, LoadingAnnounce } from "@/components/ui/section-skeleton";
 
 const tickerTop = [
   "React", "TypeScript", "Flutter", "SwiftUI", "Next.js", "Tailwind CSS",
@@ -52,6 +55,16 @@ const skillCategories = [
 ];
 
 const SkillsSection = () => {
+  const gridRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(gridRef, { once: true, margin: "-80px" });
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    if (!inView) return;
+    const t = window.setTimeout(() => setReady(true), 180);
+    return () => window.clearTimeout(t);
+  }, [inView]);
+
   return (
     <section id="skills" className="section-spacing" aria-labelledby="skills-heading">
       <div className="container-strict">
@@ -75,8 +88,18 @@ const SkillsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-foreground/5">
-          {skillCategories.map((cat, i) => (
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-px bg-foreground/5">
+          {!ready && (
+            <>
+              <LoadingAnnounce label="Skills werden geladen" />
+              {Array.from({ length: 3 }).map((_, i) => (
+                <div key={i} className="bg-background p-6 md:p-8 space-y-6">
+                  <ListSkeleton rows={6} />
+                </div>
+              ))}
+            </>
+          )}
+          {ready && skillCategories.map((cat, i) => (
             <motion.div
               key={cat.title}
               initial={{ opacity: 0, y: 20 }}

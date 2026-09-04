@@ -1,10 +1,17 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Mail, Github, Linkedin, ArrowUpRight } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
+import { ListSkeleton, LoadingAnnounce } from "@/components/ui/section-skeleton";
 
 const ContactSection = () => {
   const [copied, setCopied] = useState(false);
+  const [formReady, setFormReady] = useState(false);
+
+  useEffect(() => {
+    const t = window.setTimeout(() => setFormReady(true), 200);
+    return () => window.clearTimeout(t);
+  }, []);
 
   const handleCopy = () => {
     navigator.clipboard.writeText("mzmann252@gmail.com");
@@ -41,7 +48,16 @@ const ContactSection = () => {
 
           {/* Contact Form */}
           <div className="max-w-2xl">
-            <ContactForm />
+            {formReady ? (
+              <div className="animate-fade-in">
+                <ContactForm />
+              </div>
+            ) : (
+              <>
+                <LoadingAnnounce label="Kontaktformular wird geladen" />
+                <ListSkeleton rows={5} />
+              </>
+            )}
           </div>
 
           {/* Quick Links */}
