@@ -8,6 +8,8 @@ import PhoneCarousel from "@/components/PhoneCarousel";
 import AccessiPdfShowcase from "@/components/AccessiPdfShowcase";
 import AppAnalyzerShowcase from "@/components/AppAnalyzerShowcase";
 import TiltCard from "@/components/ui/tilt-card";
+import ProjectModal, { type ProjectModalData } from "@/components/ProjectModal";
+import { ProjectCardSkeleton, LoadingAnnounce } from "@/components/ui/section-skeleton";
 import RevealText from "@/components/ui/reveal-text";
 
 import spaetimobilImg from "@/assets/spaetimobil-screenshot.png";
@@ -205,7 +207,15 @@ const fallbackImages: Record<string, string> = {
   "helvetica-intelligence": helveticaIntelligenceImg,
 };
 
-const ProjectCard = ({ project, index }: { project: Partial<Project>; index: number }) => {
+const ProjectCard = ({
+  project,
+  index,
+  onOpenDetails,
+}: {
+  project: Partial<Project>;
+  index: number;
+  onOpenDetails: (project: Partial<Project>) => void;
+}) => {
   const isYellow = project.accent_color === "yellow";
   const accentBorder = isYellow ? "border-accent-commercial" : "border-accent-impact";
   const accentText = isYellow ? "text-accent-commercial" : "text-accent-impact";
@@ -283,12 +293,20 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
                 Anfrage senden
                 <ArrowRight className="ml-2 h-3 w-3 transition-transform group-hover/btn:translate-x-1" />
               </Button>
+              <Button
+                variant="heroOutline"
+                size="sm"
+                onClick={() => onOpenDetails(project)}
+                aria-label={`Details zu ${project.title} ansehen`}
+              >
+                Details ansehen
+              </Button>
               {project.live_url && (
                 <a
                   href={project.live_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex items-center gap-2 text-xs font-mono uppercase tracking-widest ${accentText} hover:underline`}
+                  className={`flex items-center gap-2 text-xs font-mono uppercase tracking-widest ${accentText} hover:underline rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background`}
                 >
                   <ExternalLink className="h-3 w-3" />
                   Live ansehen
@@ -353,8 +371,32 @@ const ProjectCard = ({ project, index }: { project: Partial<Project>; index: num
   );
 };
 
+const galleryFor = (project: Partial<Project>): { url: string; caption: string }[] => {
+  if (project.id === "helvetica-intelligence") return helveticaGallery;
+  const main = project.image_url || fallbackImages[project.id || ""];
+  return main ? [{ url: main, caption: `Screenshot von ${project.title}` }] : [];
+};
+
 const ProjectsSection = () => {
   const [projects, setProjects] = useState<Partial<Project>[]>(fallbackProjects);
+  const [loading, setLoading] = useState(true);
+  const [active, setActive] = useState<ProjectModalData | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openDetails = (project: Partial<Project>) => {
+    setActive({
+      id: project.id,
+      title: project.title ?? undefined,
+      subtitle: project.subtitle ?? undefined,
+      description: project.description ?? undefined,
+      features: Array.isArray(project.features) ? project.features : [],
+      tech_stack: project.tech_stack ?? [],
+      live_url: project.live_url ?? null,
+      accent_color: project.accent_color ?? null,
+      images: galleryFor(project),
+    });
+    setModalOpen(true);
+  };
 
   useEffect(() => {
     const loadProjects = async () => {
@@ -366,6 +408,7 @@ const ProjectsSection = () => {
       if (data && data.length > 0) {
         setProjects(data);
       }
+      setLoading(false);
     };
     loadProjects();
   }, []);
@@ -392,10 +435,20 @@ const ProjectsSection = () => {
           </p>
         </motion.div>
 
-        {projects.map((p, i) => (
-          <ProjectCard key={p.id} project={p} index={i} />
-        ))}
+        {loading ? (
+          <div className="space-y-12 md:space-y-16">
+            <LoadingAnnounce label="Projekte werden geladen" />
+            {Array.from({ length: 3 }).map((_, i) => (
+              <ProjectCardSkeleton key={i} />
+            ))}
+          </div>
+        ) : (
+          projects.map((p, i) => (
+            <ProjectCard key={p.id} project={p} index={i} onOpenDetails={openDetails} />
+          ))
+        )}
       </div>
+      <ProjectModal project={active} open={modalOpen} onOpenChange={setModalOpen} />
     </section>
   );
 };
