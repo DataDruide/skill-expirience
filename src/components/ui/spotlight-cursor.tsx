@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useFinePointer } from "@/hooks/use-fine-pointer";
+import LottieMicro from "@/components/ui/lottie-micro";
 
 /** Weicher Licht-Spot, der dem Mauszeiger folgt (nur auf Desktop / feinem Pointer). */
 const SpotlightCursor = () => {
@@ -41,6 +42,7 @@ const SpotlightCursor = () => {
       transition={{ opacity: { duration: 0.4 } }}
     >
       <div className="-translate-x-1/2 -translate-y-1/2 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,hsl(var(--primary)/0.10),transparent_65%)] blur-2xl" />
+      <LottieMicro variant="pulse" className="absolute -left-6 -top-6 h-12 w-12 block opacity-60" />
     </motion.div>
   );
 };
