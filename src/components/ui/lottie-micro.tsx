@@ -144,7 +144,7 @@ const LottieMicro = ({ variant = "pulse", className, loop = true }: LottieMicroP
 
   return (
     <span className={className} aria-hidden="true">
-      <Lottie animationData={data as unknown as object} loop={loop} autoplay className="w-full h-full" />
+      <Lottie src={data as unknown as object} loop={loop} autoplay className="w-full h-full" />
     </span>
   );
 };
