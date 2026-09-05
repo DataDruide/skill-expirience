@@ -336,7 +336,7 @@ const ProjectCard = ({
             {project.id === "accessiwidget" && <AccessiPdfShowcase />}
             {project.id === "appanalyzer" && <AppAnalyzerShowcase />}
             {project.id === "helvetica-intelligence" && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3" aria-label="Helvetica Intelligence Screenshots">
+              <div className="grid grid-cols-3 gap-2 sm:gap-3 pt-2" aria-label="Helvetica Intelligence Screenshots">
                 {helveticaGallery.map((g, i) => (
                   <motion.figure
                     key={i}
@@ -344,20 +344,22 @@ const ProjectCard = ({
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-40px" }}
                     transition={{ duration: 0.5, delay: 0.1 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                    className={`relative border border-subtle overflow-hidden bg-background/80 group/thumb hover:border-accent-commercial/40 transition-all duration-500 hover:shadow-xl ${i === 0 ? "sm:col-span-2 lg:col-span-1" : ""} ${i === 1 ? "lg:ml-4" : ""} ${i === 2 ? "lg:mr-4" : ""}`}
+                    className="relative border border-subtle overflow-visible bg-background/80 group/thumb hover:border-accent-commercial/40 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                   >
-                    <div className="absolute top-2 left-2 z-10 text-[9px] font-mono uppercase tracking-[0.25em] text-accent-commercial bg-background/80 backdrop-blur px-1.5 py-0.5 border border-accent-commercial/30">
+                    <div className="absolute -top-2 left-2 z-10 text-[9px] font-mono font-bold uppercase tracking-[0.2em] text-accent-commercial bg-background px-1.5 py-0.5 border border-accent-commercial/40">
                       {String(i + 1).padStart(2, "0")}
                     </div>
-                    <img
-                      src={g.url}
-                      alt={g.caption}
-                      className="w-full aspect-[16/10] object-contain bg-secondary/30 transition-transform duration-700 group-hover/thumb:scale-[1.02]"
-                      loading="lazy"
-                      decoding="async"
-                      onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
-                    />
-                    <figcaption className="px-3 py-2 text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground border-t border-subtle">
+                    <div className="overflow-hidden">
+                      <img
+                        src={g.url}
+                        alt={g.caption}
+                        className="w-full aspect-[4/3] object-contain bg-secondary/30 transition-transform duration-700 group-hover/thumb:scale-[1.04]"
+                        loading="lazy"
+                        decoding="async"
+                        onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                      />
+                    </div>
+                    <figcaption className="px-2 py-1.5 text-[8px] sm:text-[9px] font-mono uppercase tracking-[0.15em] text-muted-foreground border-t border-subtle leading-snug">
                       {g.caption}
                     </figcaption>
                   </motion.figure>
